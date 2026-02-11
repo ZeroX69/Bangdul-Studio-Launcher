@@ -329,53 +329,24 @@
             if (statusText) statusText.innerText = status;
         });
 
-        let launcherUpdateUrl = '';
-        window.launcherAPI.onLauncherUpdate((data) => {
+        // --- Launcher Auto-Update (via electron-updater) ---
+        window.launcherAPI.onLauncherUpdateStatus((data) => {
             const updateBar = document.getElementById('update-bar');
             const updateMessage = document.getElementById('update-message');
 
-            launcherUpdateUrl = data.url;
-            updateMessage.innerText = `v${data.version}: ${data.message}`;
-            updateBar.classList.remove('hidden');
-        });
-
-        async function openLauncherDownload() {
-            if (launcherUpdateUrl) {
-                const btn = document.querySelector('#update-bar button');
-                const msg = document.getElementById('update-message');
-
-                if (btn.innerText === 'RESTART & INSTALL') {
-                    await window.launcherAPI.installLauncherUpdate();
-                    return;
+            if (data.status === 'downloading') {
+                updateMessage.innerText = data.message;
+                updateBar.classList.remove('hidden');
+            } else if (data.status === 'ready') {
+                updateMessage.innerText = data.message;
+                const btn = updateBar.querySelector('button');
+                if (btn) {
+                    btn.innerText = 'RESTART';
+                    btn.onclick = () => { location.reload(); };
                 }
-
-                if (confirm("Download update launcher sekarang?")) {
-                    btn.disabled = true;
-                    btn.innerText = 'DOWNLOADING...';
-
-                    // Listen progress
-                    window.launcherAPI.onLauncherDownloadProgress((progress) => {
-                        msg.innerText = `Mengunduh update: ${progress}%`;
-                    });
-
-                    // Start Download
-                    const result = await window.launcherAPI.downloadLauncherUpdate(launcherUpdateUrl);
-
-                    if (result.success) {
-                        btn.disabled = false;
-                        btn.innerText = 'RESTART & INSTALL';
-                        btn.classList.remove('bg-white', 'text-indigo-600');
-                        btn.classList.add('bg-green-500', 'text-white', 'hover:bg-green-600');
-                        msg.innerText = "Update siap diinstall. Klik tombol disamping.";
-                    } else {
-                        alert(`Gagal download: ${result.error}`);
-                        btn.disabled = false;
-                        btn.innerText = 'DOWNLOAD';
-                        msg.innerText = "Gagal mengunduh update.";
-                    }
-                }
+                updateBar.classList.remove('hidden');
             }
-        }
+        });
 
         function closeUpdateBar() {
             document.getElementById('update-bar').classList.add('hidden');
