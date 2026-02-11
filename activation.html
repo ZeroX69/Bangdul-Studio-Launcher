@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktivasi BANGDULL STUDIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .font-studio { font-family: 'Orbitron', sans-serif; }
+    </style>
+</head>
+<body class="bg-black text-gray-200 h-screen flex flex-col items-center justify-center p-6 select-none">
+
+    <!-- Logo & Title -->
+    <div class="mb-10 text-center animate-fade-in-down">
+        <img src="assets/pratinjau.png" alt="Logo" class="w-24 h-24 mx-auto mb-6 rounded-2xl shadow-xl shadow-indigo-900/30 ring-2 ring-indigo-500/50">
+        <h1 class="text-4xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 font-studio drop-shadow-lg">BANGDULL STUDIO</h1>
+        <p class="text-zinc-500 mt-2 tracking-widest uppercase text-xs font-bold">Lisensi Diperlukan</p>
+    </div>
+
+    <!-- Activation Card -->
+    <div class="w-full max-w-md bg-zinc-900/80 backdrop-blur-xl rounded-2xl border border-zinc-800 p-8 shadow-2xl relative overflow-hidden group">
+        <!-- Shine Effect -->
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+        <!-- Machine ID Section -->
+        <div class="mb-6">
+            <label class="block text-xs font-bold text-zinc-500 uppercase tracking-wider mb-2">ID Mesin Anda</label>
+            <div class="flex gap-2">
+                <input type="text" id="machine-id" readonly 
+                    class="w-full bg-black/50 border border-zinc-700 rounded-lg px-4 py-3 text-indigo-300 font-mono text-center tracking-wider focus:outline-none focus:ring-2 focus:ring-indigo-500/50 cursor-pointer transition-all"
+                    value="Memuat ID Mesin..." onclick="copyMachineId()">
+                <button onclick="copyMachineId()" class="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 px-3 rounded-lg border border-zinc-700 transition-colors" title="Salin Global ID">
+                    📋
+                </button>
+            </div>
+            <p class="text-[10px] text-zinc-600 mt-2 text-center">Salin ID ini dan kirimkan ke Admin untuk mendapatkan kunci.</p>
+        </div>
+
+        <!-- License Key Input -->
+        <div class="mb-8">
+            <label class="block text-xs font-bold text-zinc-500 uppercase tracking-wider mb-2">Kunci Aktivasi</label>
+            <textarea id="activation-key" rows="3" 
+                class="w-full bg-black/50 border border-zinc-700 rounded-lg px-4 py-3 text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all placeholder-zinc-700 resize-none"
+                placeholder="Tempel kunci aktivasi di sini..."></textarea>
+        </div>
+
+        <!-- Activate Button -->
+        <button id="btn-activate" onclick="submitActivation()" 
+            class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-indigo-900/30 transition-all transform hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">
+            AKTIFKAN SEKARANG
+        </button>
+        
+        <p id="status-msg" class="text-center text-sm mt-4 min-h-[20px] font-medium"></p>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        const machineIdInput = document.getElementById('machine-id');
+        const activationKeyInput = document.getElementById('activation-key');
+        const statusMsg = document.getElementById('status-msg');
+        const btnActivate = document.getElementById('btn-activate');
+        let currentMachineId = '';
+
+        // 1. Load Machine ID on Startup
+        async function loadMachineId() {
+            try {
+                // Gunakan invoke untuk mendapatkan ID
+                const id = await window.launcherAPI.getMachineId();
+                if (id) {
+                    currentMachineId = id;
+                    machineIdInput.value = id;
+                } else {
+                    machineIdInput.value = "Gagal memuat ID";
+                }
+            } catch (error) {
+                console.error("Error loading Machine ID:", error);
+                machineIdInput.value = "Error";
+            }
+        }
+
+        // 2. Copy Machine ID
+        function copyMachineId() {
+            if (currentMachineId) {
+                navigator.clipboard.writeText(currentMachineId);
+                const originalText = machineIdInput.value;
+                machineIdInput.value = "ID Tersalin! ✅";
+                setTimeout(() => machineIdInput.value = originalText, 1500);
+            }
+        }
+
+        // 3. Submit Activation
+        async function submitActivation() {
+            const key = activationKeyInput.value.trim();
+            
+            if (!key) {
+                showStatus("Masukkan kunci aktivasi terlebih dahulu.", "text-red-500");
+                return;
+            }
+
+            // UI Loading State
+            btnActivate.disabled = true;
+            btnActivate.innerText = "MEMVALIDASI...";
+            showStatus("");
+
+            try {
+                const result = await window.launcherAPI.submitActivationKey(key);
+                
+                if (result.success) {
+                    showStatus("Aktivasi Berhasil! Mengalihkan...", "text-green-500");
+                    setTimeout(() => {
+                        window.launcherAPI.reloadApp(); // Reload untuk masuk ke menu utama
+                    }, 1500);
+                } else {
+                    showStatus(result.message || "Aktivasi Gagal.", "text-red-500");
+                    btnActivate.disabled = false;
+                    btnActivate.innerText = "AKTIFKAN SEKARANG";
+                }
+            } catch (error) {
+                showStatus("Terjadi kesalahan sistem.", "text-red-500");
+                console.error(error);
+                btnActivate.disabled = false;
+                btnActivate.innerText = "AKTIFKAN SEKARANG";
+            }
+        }
+
+        function showStatus(msg, colorClass) {
+            statusMsg.className = `text-center text-sm mt-4 min-h-[20px] font-medium ${colorClass}`;
+            statusMsg.innerText = msg;
+        }
+
+        // Init
+        loadMachineId();
+    </script>
+</body>
+</html>

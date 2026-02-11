@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANGDULL STUDIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .font-studio {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+
+<body class="bg-black text-gray-200 h-screen flex flex-col overflow-hidden">
+
+    <!-- Header -->
+    <header
+        class="bg-black/80 backdrop-blur-md p-4 border-b border-zinc-800 flex items-center justify-between z-10 sticky top-0">
+        <div class="flex items-center gap-4">
+            <img src="assets/pratinjau.png" alt="Logo"
+                class="w-12 h-12 rounded-xl object-cover ring-2 ring-indigo-500/50 shadow-lg shadow-indigo-900/20">
+            <div>
+                <div class="flex items-baseline gap-3">
+                    <h1
+                        class="text-2xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 font-studio drop-shadow-sm">
+                        BANGDULL STUDIO</h1>
+                    <span
+                        class="text-[10px] text-zinc-500 font-mono border border-zinc-700/50 rounded px-1.5 py-0.5 bg-zinc-900/50">v1.0.0</span>
+                </div>
+                <p class="text-[10px] text-zinc-500 tracking-[0.2em] uppercase font-bold pl-0.5">Creative AI Launcher
+                </p>
+            </div>
+        </div>
+
+        <!-- Account Button -->
+        <button onclick="toggleAccountModal()"
+            class="flex items-center gap-3 px-4 py-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-lg transition-all group">
+            <div class="text-right hidden sm:block">
+                <p id="header-username"
+                    class="text-xs font-bold text-white group-hover:text-indigo-400 transition-colors">User</p>
+                <p class="text-[10px] text-zinc-500 uppercase tracking-wider">Online</p>
+            </div>
+            <div
+                class="w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-900/20">
+                <span id="header-initial">U</span>
+            </div>
+        </button>
+    </header>
+
+    <!-- Update Notification Bar -->
+    <div id="update-bar"
+        class="hidden bg-indigo-600 text-white px-4 py-2 flex items-center justify-between shadow-lg z-20 sticky top-[73px] animate-slide-down">
+        <div class="flex items-center gap-3">
+            <span class="text-xl">🚀</span>
+            <div>
+                <p class="font-bold text-sm">Update Launcher Tersedia!</p>
+                <p class="text-xs text-indigo-200" id="update-message">Versi baru siap diunduh.</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-3">
+            <button onclick="openLauncherDownload()"
+                class="bg-white text-indigo-600 px-3 py-1 rounded text-xs font-bold hover:bg-gray-100 transition-colors shadow-sm">
+                DOWNLOAD
+            </button>
+            <button onclick="closeUpdateBar()"
+                class="p-1 hover:bg-indigo-500 rounded text-indigo-200 hover:text-white transition-colors"
+                title="Tutup">
+                ✕
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow p-8 overflow-y-auto">
+        <div id="apps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- App Cards will be injected here -->
+            <div class="text-zinc-500 col-span-full text-center py-20 animate-pulse">
+                Memuat daftar aplikasi...
+            </div>
+        </div>
+    </main>
+
+    <!-- Account Modal -->
+    <div id="account-modal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 w-full max-w-sm shadow-2xl transform scale-95 transition-transform duration-300"
+            id="account-modal-content">
+            <div class="flex justify-between items-start mb-6">
+                <h2 class="text-lg font-bold text-white tracking-wide">Profil Akun</h2>
+                <button onclick="toggleAccountModal()"
+                    class="text-zinc-500 hover:text-white transition-colors">✕</button>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-zinc-500 uppercase tracking-wider mb-1">Nama
+                        Pengguna</label>
+                    <p id="modal-username" class="text-white font-bold text-lg">Memuat...</p>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-zinc-500 uppercase tracking-wider mb-1">Masa Aktif
+                        Lisensi</label>
+                    <p id="modal-expiry" class="text-emerald-400 font-bold font-mono">Memuat...</p>
+                </div>
+
+                <div class="pt-4 border-t border-zinc-800 mt-4">
+                    <button onclick="handleLogout()"
+                        class="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-3 rounded-lg shadow-lg shadow-red-900/20 transition-all hover:scale-[1.02] active:scale-95">
+                        LOGOUT
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        const appsGrid = document.getElementById('apps-grid');
+        const accountModal = document.getElementById('account-modal');
+        const accountModalContent = document.getElementById('account-modal-content');
+
+        // Modal Logic
+        function toggleAccountModal() {
+            const isHidden = accountModal.classList.contains('hidden');
+            if (isHidden) {
+                accountModal.classList.remove('hidden');
+                // Allow animation frame to process remove hidden before adding opacity
+                requestAnimationFrame(() => {
+                    accountModal.classList.remove('opacity-0');
+                    accountModalContent.classList.remove('scale-95');
+                    accountModalContent.classList.add('scale-100');
+                });
+                loadAccountInfo();
+            } else {
+                accountModal.classList.add('opacity-0');
+                accountModalContent.classList.remove('scale-100');
+                accountModalContent.classList.add('scale-95');
+                setTimeout(() => {
+                    accountModal.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        async function loadAccountInfo() {
+            const info = await window.launcherAPI.getAccountInfo();
+            if (info) {
+                // Update Modal
+                document.getElementById('modal-username').innerText = info.username;
+
+                const expiry = new Date(info.expiryDate);
+                const options = { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+                document.getElementById('modal-expiry').innerText = expiry.toLocaleDateString('id-ID', options);
+
+                // Update Header (Initial Load)
+                document.getElementById('header-username').innerText = info.username;
+                document.getElementById('header-initial').innerText = info.username.charAt(0).toUpperCase();
+            }
+        }
+
+        async function handleLogout() {
+            if (confirm("Apakah Anda yakin ingin keluar? Lisensi akan dinonaktifkan di perangkat ini.")) {
+                await window.launcherAPI.logout();
+            }
+        }
+
+        // --- Init ---
+        loadAccountInfo(); // Load user info on startup
+
+
+        // Render Apps
+        async function loadApps() {
+            const apps = await window.launcherAPI.getApps();
+            appsGrid.innerHTML = '';
+
+            if (apps.length === 0) {
+                appsGrid.innerHTML = '<div class="text-zinc-500 col-span-full text-center py-20">Tidak ada aplikasi ditemukan dalam manifest.</div>';
+                return;
+            }
+
+            apps.forEach(app => {
+                const card = document.createElement('div');
+                card.className = 'app-card bg-zinc-900 rounded-xl overflow-hidden shadow-lg hover:shadow-indigo-500/20 transition-all duration-300 border border-zinc-800 hover:border-indigo-500/50 relative group';
+
+                // Status Logic
+                let actionBtnText = 'DOWNLOAD';
+                let actionBtnClass = 'bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white shadow-lg shadow-indigo-900/50';
+                let actionFunc = `downloadApp('${app.id}')`;
+
+                if (app.isInstalled) {
+                    if (app.updateAvailable) {
+                        actionBtnText = 'UPDATE';
+                        actionBtnClass = 'bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white shadow-lg shadow-orange-900/50 animate-pulse';
+                        actionFunc = `downloadApp('${app.id}')`; // Update uses same download logic
+                    } else {
+                        actionBtnText = 'MAINKAN';
+                        actionBtnClass = 'bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white shadow-lg shadow-emerald-900/50';
+                        actionFunc = `launchApp('${app.id}')`;
+                    }
+                }
+
+                card.innerHTML = `
+                    <div class="h-44 bg-zinc-950 relative overflow-hidden group">
+                        <img src="${app.icon}" alt="${app.name}" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-500 scale-100 group-hover:scale-110">
+                        <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-zinc-900 to-transparent"></div>
+                        <div class="absolute bottom-3 left-4 right-4 animate-slide-up">
+                            <h3 class="text-lg font-bold text-white tracking-tight drop-shadow-md truncate">${app.name}</h3>
+                            <p class="text-xs text-zinc-400 font-mono bg-black/30 w-fit px-2 py-0.5 rounded backdrop-blur-sm border border-white/5">${app.version}</p>
+                        </div>
+                    </div>
+                
+                    <div class="p-5">
+                        <p class="text-zinc-400 text-sm mb-5 h-10 leading-relaxed overflow-hidden text-ellipsis line-clamp-2">${app.description}</p>
+                        
+                        <!-- Progress Bar (Hidden by default) -->
+                        <div id="progress-container-${app.id}" class="hidden mb-4 bg-zinc-950 rounded-lg p-3 border border-zinc-800">
+
+                            <div class="flex justify-between text-xs text-gray-400 mb-1">
+                                <span id="status-text-${app.id}">Downloading...</span>
+                                <span id="progress-text-${app.id}">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5">
+                                <div id="progress-bar-${app.id}" class="bg-indigo-500 h-1.5 rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-2">
+                            <button id="btn-${app.id}" onclick="${actionFunc}" 
+                                class="flex-grow py-2 rounded-lg font-bold text-sm tracking-wide transition-colors ${actionBtnClass}">
+                                ${actionBtnText}
+                            </button>
+                            ${app.isInstalled ? `
+                            <button onclick="openFolder('${app.id}')" class="px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg text-gray-300" title="Buka Folder">
+                                📂
+                            </button>` : ''}
+                        </div>
+                    </div>
+                `;
+                appsGrid.appendChild(card);
+
+                // Simpan text object app di element untuk referensi nanti jika perlu
+                card.dataset.appConfig = JSON.stringify(app);
+            });
+        }
+
+        // Actions
+        async function downloadApp(appId) {
+            const btn = document.getElementById(`btn-${appId}`);
+            const progressContainer = document.getElementById(`progress-container-${appId}`);
+
+            // Konfirmasi (opsional, untuk UX lebih baik)
+            if (!confirm("Download aplikasi ini?")) return;
+
+            // UI State: Downloading
+            btn.disabled = true;
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+            btn.innerText = 'MEMPROSES...';
+            progressContainer.classList.remove('hidden');
+
+            // Ambil config dari dataset (cara cepat, di real app lebih baik lookup array)
+            const apps = await window.launcherAPI.getApps();
+            const appConfig = apps.find(a => a.id === appId);
+
+            window.launcherAPI.downloadApp(appConfig).then(result => {
+                if (result.success) {
+                    if (result.type === 'installer') {
+                        // Installer .exe telah dijalankan
+                        alert(`Installer ${appConfig.name} sudah dibuka! Silakan ikuti proses instalasinya.`);
+                        // Reset UI (karena installer terpisah)
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        btn.innerText = 'DOWNLOAD';
+                        progressContainer.classList.add('hidden');
+                    } else {
+                        // ZIP berhasil di-extract
+                        loadApps();
+                        alert(`Berhasil menginstal ${appConfig.name}!`);
+                    }
+                } else {
+                    alert(`Gagal download: ${result.error}`);
+                    // Reset UI
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    btn.innerText = 'DOWNLOAD';
+                    progressContainer.classList.add('hidden');
+                }
+            });
+        }
+
+        async function launchApp(appId) {
+            const apps = await window.launcherAPI.getApps();
+            const appConfig = apps.find(a => a.id === appId);
+
+            window.launcherAPI.launchApp(appConfig).then(result => {
+                if (!result.success) {
+                    alert(`Gagal membuka aplikasi: ${result.error}\nCek apakah file exe masih ada.`);
+                    // Jika file hilang, mungkin perlu refresh status jadi belum terinstall?
+                    if (result.error.includes('tidak ditemukan')) loadApps();
+                }
+            });
+        }
+
+        async function openFolder(appId) {
+            const apps = await window.launcherAPI.getApps();
+            const appConfig = apps.find(a => a.id === appId);
+            window.launcherAPI.openFolder(appConfig);
+        }
+
+        // --- Listeners ---
+        window.launcherAPI.onDownloadProgress((data) => {
+            const { id, progress, status } = data;
+            const progressBar = document.getElementById(`progress-bar-${id}`);
+            const progressText = document.getElementById(`progress-text-${id}`);
+            const statusText = document.getElementById(`status-text-${id}`);
+
+            if (progressBar) progressBar.style.width = `${progress}%`;
+            if (progressText) progressText.innerText = `${progress}%`;
+            if (statusText) statusText.innerText = status;
+        });
+
+        let launcherUpdateUrl = '';
+        window.launcherAPI.onLauncherUpdate((data) => {
+            const updateBar = document.getElementById('update-bar');
+            const updateMessage = document.getElementById('update-message');
+
+            launcherUpdateUrl = data.url;
+            updateMessage.innerText = `v${data.version}: ${data.message}`;
+            updateBar.classList.remove('hidden');
+        });
+
+        async function openLauncherDownload() {
+            if (launcherUpdateUrl) {
+                const btn = document.querySelector('#update-bar button');
+                const msg = document.getElementById('update-message');
+
+                if (btn.innerText === 'RESTART & INSTALL') {
+                    await window.launcherAPI.installLauncherUpdate();
+                    return;
+                }
+
+                if (confirm("Download update launcher sekarang?")) {
+                    btn.disabled = true;
+                    btn.innerText = 'DOWNLOADING...';
+
+                    // Listen progress
+                    window.launcherAPI.onLauncherDownloadProgress((progress) => {
+                        msg.innerText = `Mengunduh update: ${progress}%`;
+                    });
+
+                    // Start Download
+                    const result = await window.launcherAPI.downloadLauncherUpdate(launcherUpdateUrl);
+
+                    if (result.success) {
+                        btn.disabled = false;
+                        btn.innerText = 'RESTART & INSTALL';
+                        btn.classList.remove('bg-white', 'text-indigo-600');
+                        btn.classList.add('bg-green-500', 'text-white', 'hover:bg-green-600');
+                        msg.innerText = "Update siap diinstall. Klik tombol disamping.";
+                    } else {
+                        alert(`Gagal download: ${result.error}`);
+                        btn.disabled = false;
+                        btn.innerText = 'DOWNLOAD';
+                        msg.innerText = "Gagal mengunduh update.";
+                    }
+                }
+            }
+        }
+
+        function closeUpdateBar() {
+            document.getElementById('update-bar').classList.add('hidden');
+        }
+
+        // Init
+        loadApps();
+
+    </script>
+</body>
+
+</html>

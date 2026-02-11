@@ -1,0 +1,1357 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #09090b;
+}
+
+/* Panel Layout Styling */
+#main-app {
+    box-sizing: border-box;
+}
+
+#main-app > aside,
+#main-app #center-main-panel {
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.3);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #18181b;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 3px;
+}
+
+input,
+select,
+textarea {
+    background-color: #000000;
+    border-color: #4b5563;
+}
+
+input:read-only {
+    background-color: #111827 !important;
+    cursor: default;
+}
+
+.slider-container {
+    position: relative;
+    padding-top: 20px;
+}
+
+.slider-value {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    color: #000000;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: 0 0;
+}
+
+input[type=range]:focus {
+    outline: 0;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    margin-top: -5px;
+    border: 1px solid #e5e7eb;
+}
+
+input[type=range]::-moz-range-thumb {
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    border: 1px solid #e5e7eb;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: #52525b;
+    border-radius: 5px;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: #52525b;
+    border-radius: 5px;
+}
+
+/* Gaya untuk progress bar lingkaran dan spinner */
+.progress-ring__circle {
+    transition: stroke-dashoffset 0.35s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Gaya Notifikasi */
+#notification-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    background-color: #27272a;
+    color: #e4e4e7;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #3f3f46;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transform: translateX(120%);
+    opacity: 0;
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.toast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* --- Gaya Baru untuk Error Overlay --- */
+#error-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    z-index: 9999;
+    display: none;
+    /* Disembunyikan secara default */
+    padding: 2rem;
+    backdrop-filter: blur(4px);
+}
+
+/* Modal Konfirmasi */
+#confirm-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 5000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+#confirm-modal-backdrop.visible {
+    display: block;
+}
+
+#confirm-modal-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    background-color: #18181b;
+    border: 1px solid #3f3f46;
+    border-radius: 12px;
+    padding: 24px;
+    width: 90%;
+    max-width: 400px;
+    z-index: 5001;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+#confirm-modal-backdrop.visible #confirm-modal-panel {
+    display: block;
+}
+
+/* --- Gaya Baru untuk Pop-up Pengaturan --- */
+#settings-popup {
+    position: fixed;
+    top: 40%;
+    left: 58%;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 450px;
+    max-height: 90%;
+    background-color: rgba(3, 3, 3, 0.95);
+    /* zinc-900 with transparency */
+    /* backdrop-filter: blur(8px); */
+    /* Dihapus untuk menghilangkan efek buram */
+    border: 1px solid #3f3f46;
+    /* zinc-700 */
+    border-radius: 12px;
+    z-index: 6000;
+    display: none;
+    /* Hidden by default */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    /*color: #0909c9; /* Contoh: Warna abu-abu (zinc-200) */
+    font-size: 18px;
+    /* Contoh: Ukuran 14px (text-sm) */
+}
+
+.settings-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 11px;
+    padding: 4px 8px;
+    background-color: #27272a;
+    /* zinc-800 */
+    border: 1px solid #3f3f46;
+    /* zinc-700 */
+    border-radius: 6px;
+    margin-top: 8px;
+    cursor: pointer;
+    width: 100%;
+    color: #d4d4d8;
+    /* zinc-300 */
+}
+
+.settings-button:hover {
+    background-color: #3f3f46;
+    border-color: #52525b;
+}
+
+/* --- Gaya Baru untuk Overlay Pengunduh Library --- */
+#download-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    backdrop-filter: blur(5px);
+    /* Awalnya disembunyikan */
+    display: none;
+}
+
+#download-overlay.visible {
+    display: flex;
+}
+
+#download-progress-bar-container {
+    width: 100%;
+    max-width: 300px;
+    height: 8px;
+    background-color: #3f3f46;
+    /* zinc-700 */
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 16px;
+}
+
+#download-progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 4px;
+    transition: width 0.3s ease-in-out;
+}
+
+/* --- Gaya Baru untuk Overlay Aktivasi --- */
+#activation-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: #000000;
+    color: white;
+    z-index: 10001;
+    /* Di atas segalanya */
+    display: none;
+    /* Awalnya disembunyikan */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+#activation-overlay.visible {
+    display: flex;
+}
+
+.activation-input {
+    background-color: #18181b;
+    /* zinc-900 */
+    border: 1px solid #3f3f46;
+    /* zinc-700 */
+    color: #e4e4e7;
+    /* zinc-200 */
+    padding: 8px 12px;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 400px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.activation-input:read-only {
+    background-color: #27272a;
+    /* zinc-800 */
+    cursor: not-allowed;
+    color: #a1a1aa;
+    /* zinc-400 */
+}
+
+.activation-button {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 16px;
+}
+
+.activation-button:hover {
+    background-color: #e5e7eb;
+    /* gray-200 */
+}
+
+.activation-button:disabled {
+    background-color: #3f3f46;
+    /* zinc-700 */
+    color: #71717a;
+    /* zinc-500 */
+    cursor: not-allowed;
+}
+
+/* --- Gaya Baru untuk Tombol Pengaturan Akun & Pop-up --- */
+#account-settings-btn {
+    position: absolute;
+    top: 16px;
+    /* Sesuaikan jarak dari atas */
+    right: 16px;
+    /* Sesuaikan jarak dari kanan */
+    z-index: 15;
+    /* Di bawah settings-popup tapi di atas preview */
+    padding: 6px;
+    background-color: rgba(13, 13, 14, 0.7);
+    /* zinc-800 with transparency */
+    border: 1px solid #ece8ec;
+    /* zinc-600 */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#account-settings-btn:hover {
+    background-color: rgba(63, 63, 70, 0.9);
+    /* zinc-700 */
+}
+
+#account-popup {
+    position: absolute;
+    top: 60px;
+    /* Di bawah tombol */
+    right: 16px;
+    width: 280px;
+    background-color: rgba(24, 24, 27, 0.95);
+    /* zinc-900 with transparency */
+    backdrop-filter: blur(8px);
+    border: 1px solid #3f3f46;
+    /* zinc-700 */
+    border-radius: 12px;
+    z-index: 50;
+    /* Di atas segalanya di main area */
+    display: none;
+    /* Hidden by default */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    color: #d4d4d8;
+    /* zinc-300 */
+}
+
+.logout-button {
+    background-color: #dc2626;
+    /* red-600 */
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    text-align: center;
+}
+
+.logout-button:hover {
+    background-color: #ef4444;
+    /* red-500 */
+}
+
+/* Gaya tambahan untuk tombol folder cache */
+.cache-folder-button {
+    /* Tombol "Buka Folder Cache" */
+    background-color: #3f3f46;
+    /* zinc-700 */
+    color: #d4d4d8;
+    /* zinc-300 */
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #52525b;
+    /* zinc-600 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    /* Jarak antara ikon dan teks */
+    font-size: 13px;
+    /* Ukuran font sedikit lebih kecil */
+}
+
+.cache-folder-button:hover {
+    background-color: #52525b;
+    /* zinc-600 */
+}
+
+/* Tombol "Hapus Cache" */
+#clear-cache-btn {
+    margin-top: 1rem;
+    /* mt-4 */
+    width: 100%;
+    background-color: #27272a;
+    /* zinc-800 */
+    color: #a1a1aa;
+    /* zinc-400 */
+    font-weight: bold;
+    padding-top: 0.5rem;
+    /* py-2 */
+    padding-bottom: 0.5rem;
+    /* py-2 */
+    padding-left: 1rem;
+    /* px-4 */
+    padding-right: 1rem;
+    /* px-4 */
+    border-radius: 0.375rem;
+    /* rounded-md */
+    border-width: 1px;
+    border-color: #ffffff;
+    /* border-white */
+    font-size: 0.875rem;
+    /* text-sm */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    /* gap-2 */
+    transition: background-color 0.2s;
+}
+
+#clear-cache-btn:hover {
+    background-color: #616164;
+    /* zinc-700 */
+    color: #e4e4e7;
+    /* zinc-200 */
+}
+
+/* Tombol saat memproses */
+.token-button.processing {
+    display: flex;
+    /* Membuat teks dan angka berdampingan */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    /* Jarak antara teks dan angka */
+
+    /* --- GAYA BARU YANG DITAMBAHKAN --- */
+    background-color: #dc2626;
+    /* red-600 */
+    border-color: #ef4444;
+    /* red-500 (jika ada border) */
+    color: white;
+    cursor: not-allowed;
+}
+
+/* Mengubah warna hover saat sedang processing */
+.token-button.processing:hover {
+    background-color: #b91c1c;
+    /* red-700 */
+}
+
+/* Teks "..." */
+.token-button.processing .button-text {
+    font-size: 16px;
+    /* text-sm */
+    color: white;
+}
+
+/* Angka Countdown */
+.token-button .button-countdown {
+    font-size: 16px;
+    font-weight: bold;
+    /* Warna Fuchsia (Tailwind fuchsia-500) */
+    color: #f3f3f3;
+}
+
+/* === CYBERPUNK YOUTUBE WORKFLOW THEME === */
+:root {
+    --cyber-bg: #0A0A0A;
+    --cyber-lime: #a3e635;
+    --cyber-lime-dim: rgba(163, 230, 53, 0.2);
+    --cyber-neutral-900: #171717;
+    --cyber-neutral-800: #262626;
+    --cyber-neutral-700: #404040;
+}
+
+#youtube-workflow-container {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--cyber-bg);
+    color: #e5e5e5;
+}
+
+.workflow-step-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 16px;
+    border-bottom: 1px solid var(--cyber-neutral-800);
+}
+
+.workflow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.workflow-step.active {
+    background: var(--cyber-lime-dim);
+}
+
+.workflow-step.completed {
+    opacity: 0.6;
+}
+
+.workflow-step:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.workflow-step-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--cyber-lime);
+}
+
+.workflow-step-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #a1a1aa;
+    font-weight: 600;
+}
+
+.workflow-step.active .workflow-step-label {
+    color: var(--cyber-lime);
+}
+
+.workflow-content {
+    padding: 24px;
+    animation: slideInFromBottom 0.3s ease-out;
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cyber-input {
+    background: #000;
+    border: 1px solid var(--cyber-neutral-800);
+    color: var(--cyber-lime);
+    padding: 12px 16px;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-size: 14px;
+}
+
+.cyber-input:focus {
+    border-color: var(--cyber-lime);
+}
+
+.cyber-select {
+    background: #000;
+    border: 1px solid var(--cyber-neutral-800);
+    color: #d4d4d8;
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.cyber-button {
+    background: var(--cyber-lime);
+    color: #000;
+    font-weight: 800;
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cyber-button:hover {
+    background: #bef264;
+    transform: translateY(-1px);
+}
+
+.cyber-button:disabled {
+    background: var(--cyber-neutral-700);
+    color: #71717a;
+    cursor: not-allowed;
+}
+
+.cyber-card {
+    background: var(--cyber-neutral-900);
+    border: 1px solid var(--cyber-neutral-800);
+    border-radius: 16px;
+    padding: 20px;
+    transition: border-color 0.2s;
+}
+
+.cyber-card:hover {
+    border-color: var(--cyber-neutral-700);
+}
+
+.cyber-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cyber-badge-green {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+}
+
+.cyber-badge-yellow {
+    background: rgba(234, 179, 8, 0.2);
+    color: #eab308;
+}
+
+.cyber-badge-red {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.workflow-loading {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.workflow-loading-text {
+    font-size: 14px;
+    color: var(--cyber-lime);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.bento-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 768px) {
+    .bento-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.bento-grid {
+    display: grid;
+    gap: 16px;
+}
+
+.bento-grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.aspect-video {
+    aspect-ratio: 16 / 9;
+}
+
+.aspect-9-16 {
+    aspect-ratio: 9 / 16;
+}
+
+.aspect-3-4 {
+    aspect-ratio: 3 / 4;
+}
+
+
+/* Utility classes for blur effect */
+.blur-background {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+}
+
+.transition-blur {
+    transition: filter 0.3s ease;
+}
+
+/* === LIGHT THEME OVERRIDES === */
+body.light-theme {
+    background-color: #f9fafb !important;
+    /* gray-50 */
+    color: #111827 !important;
+    /* gray-900 */
+}
+
+/* Sidebar & Panels Backgrounds */
+.light-theme aside,
+.light-theme #center-main-panel,
+.light-theme #remove-bg-queue-panel,
+.light-theme #film-magic-preview-sidebar {
+    background-color: #ffffff !important;
+}
+
+/* Borders */
+.light-theme .border-zinc-800,
+.light-theme .border-zinc-700,
+.light-theme .border-zinc-600 {
+    border-color: #e5e7eb !important;
+    /* gray-200 */
+}
+
+/* Text Colors */
+.light-theme .text-white,
+.light-theme .text-gray-200,
+.light-theme .text-gray-300 {
+    color: #111827 !important;
+    /* gray-900 */
+}
+
+.light-theme .text-gray-400,
+.light-theme .text-gray-500 {
+    color: #4b5563 !important;
+    /* gray-600 */
+}
+
+/* Headings */
+.light-theme h1,
+.light-theme h2,
+.light-theme h3,
+.light-theme h4 {
+    color: #111827 !important;
+}
+
+/* Inputs, Selects, Textareas */
+.light-theme input,
+.light-theme select,
+.light-theme textarea {
+    background-color: #ffffff !important;
+    border-color: #d1d5db !important;
+    /* gray-300 */
+    color: #111827 !important;
+}
+
+.light-theme input::placeholder,
+.light-theme textarea::placeholder {
+    color: #9ca3af !important;
+    /* gray-400 */
+}
+
+/* Modals & Popups Backgrounds */
+.light-theme #account-popup,
+.light-theme #settings-popup,
+.light-theme #confirm-modal-panel,
+.light-theme .bg-zinc-900,
+.light-theme .bg-zinc-800 {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Specific Fixes */
+.light-theme button.bg-white {
+    background-color: #e5e7eb !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db;
+}
+
+.light-theme .settings-button {
+    background-color: #f3f4f6 !important;
+    color: #1f2937 !important;
+    border-color: #e5e7eb !important;
+}
+
+.light-theme .settings-button:hover {
+    background-color: #e5e7eb !important;
+}
+
+/* Fix for icons that might be white */
+.light-theme svg.text-white,
+.light-theme svg.text-gray-300 {
+    fill: currentColor;
+    color: #1f2937 !important;
+}
+
+/* Log Terminal fix */
+.light-theme #terminal {
+    background-color: #f3f4f6 !important;
+    border-color: #e5e7eb !important;
+    color: #1f2937 !important;
+}
+
+/* Scrollbar fix for light mode */
+.light-theme ::-webkit-scrollbar-track {
+    background: #f3f4f6;
+}
+
+.light-theme ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+}
+
+/* === DARK NEON GREEN THEME === */
+body.dark-neon-green-theme {
+    --neon-green: #39ff14;
+    --neon-black: #000000;
+}
+
+/* Tombol Mulai Proses & Logout */
+body.dark-neon-green-theme #start-process-btn,
+body.dark-neon-green-theme #logout-btn {
+    background-color: var(--neon-green) !important;
+    color: var(--neon-black) !important;
+    border-color: var(--neon-green) !important;
+    font-weight: 800 !important;
+    /* Hitam Pekat (Boldest) */
+}
+
+/* Hover State untuk Tombol */
+body.dark-neon-green-theme #start-process-btn:hover,
+body.dark-neon-green-theme #logout-btn:hover {
+    background-color: #32d911 !important;
+    /* Slightly darker neon */
+}
+
+/* Neon Green Text for Labels (Broad Targeting based on Tailwind Classes) */
+/* Targets most labels in the sidebar which use text-gray-400 or font-bold */
+body.dark-neon-green-theme #sidebar label.text-gray-400,
+body.dark-neon-green-theme #sidebar label.text-gray-200,
+body.dark-neon-green-theme #sidebar label.font-bold,
+body.dark-neon-green-theme #sidebar label.font-medium,
+/* Specific overrides for Account Popup if needed */
+body.dark-neon-green-theme #account-popup label,
+body.dark-neon-green-theme #account-popup p.text-gray-400 {
+    color: var(--neon-green) !important;
+}
+
+/* Target specifically "PILIHAN MODE" which is text-gray-200 */
+body.dark-neon-green-theme label[for="main-mode-select"] {
+    color: var(--neon-green) !important;
+}
+
+/* Specific fix for "Antrian Proses" if it uses typical text classes in Remove BG */
+/* We target standard text containers in the sidebar menu content */
+body.dark-neon-green-theme #removebg-menu .text-gray-400,
+body.dark-neon-green-theme #removebg-menu .text-gray-500 {
+    color: var(--neon-green) !important;
+}
+
+/* Ensure input text remains readable (not neon green on white/black inputs) */
+/* Inputs usually have their own color settings, but we ensure we don't accidentally color them if they inherit */
+body.dark-neon-green-theme input,
+/* Specific override for "Antrian Proses" in Dark Neon Green to be Neon */
+.dark-neon-green-theme #remove-bg-queue-panel h3 {
+    color: var(--neon-green) !important;
+    text-shadow: 0 0 5px var(--neon-green);
+}
+
+/* === LIGHT NEON GREEN THEME === */
+.light-neon-green-theme {
+    /* Override Base Colors - Force Light Mode Look */
+    --background-color: #ffffff;
+    --text-color: #111827;
+    /* Gray-900 */
+    --card-bg: #f3f4f6;
+    /* Gray-100 */
+    --border-color: #cbd5e1;
+    /* Slate-300 */
+
+    background-color: #ffffff !important;
+    color: #111827 !important;
+}
+
+/* Force Light Backgrounds on Main Elements */
+.light-neon-green-theme #sidebar,
+.light-neon-green-theme #preview-area,
+.light-neon-green-theme #terminal,
+.light-neon-green-theme .bg-black,
+.light-neon-green-theme .bg-black\/70,
+.light-neon-green-theme .bg-zinc-900,
+.light-neon-green-theme .bg-zinc-800 {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    border-color: #e5e7eb !important;
+    /* Gray-200 */
+}
+
+/* Fix Icons in Sidebar for Light Mode */
+.light-neon-green-theme #sidebar svg {
+    color: #111827 !important;
+}
+
+/* Fix Buttons to be Light */
+.light-neon-green-theme .settings-button,
+.light-neon-green-theme button.bg-zinc-800,
+.light-neon-green-theme button.bg-zinc-700 {
+    background-color: #f3f4f6 !important;
+    /* Gray-100 */
+    color: #1f2937 !important;
+    /* Gray-800 */
+    border: 1px solid #d1d5db !important;
+    /* Gray-300 */
+}
+
+/* Fix Icons inside Buttons to be Dark */
+.light-neon-green-theme button svg,
+.light-neon-green-theme .settings-button svg {
+    color: #1f2937 !important;
+}
+
+/* Fix Inputs and Selects */
+.light-neon-green-theme input,
+.light-neon-green-theme select,
+.light-neon-green-theme textarea {
+    background-color: #ffffff !important;
+    color: #1f2937 !important;
+    border-color: #d1d5db !important;
+}
+
+/* Neon Green Accents for Light Theme */
+.light-neon-green-theme #start-process-btn,
+.light-neon-green-theme #logout-btn {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    border: 1px solid #059669 !important;
+    /* Emerald-600 for visibility */
+    box-shadow: 0 0 5px #059669 !important;
+}
+
+.light-neon-green-theme #start-process-btn:hover,
+.light-neon-green-theme #logout-btn:hover {
+    background-color: #ecfdf5 !important;
+    /* Emerald-50 */
+    box-shadow: 0 0 10px #059669 !important;
+}
+
+/* Text Highlights - Darker Green for Readability on White */
+.light-neon-green-theme label,
+.light-neon-green-theme .text-gray-400,
+.light-neon-green-theme .text-gray-500,
+.light-neon-green-theme label[for="main-mode-select"],
+.light-neon-green-theme #removebg-menu label,
+.light-neon-green-theme #remove-bg-queue-panel h3 {
+    color: #059669 !important;
+    /* Emerald-600 */
+    font-weight: 600 !important;
+}
+
+/* Specific overrides for Model Selection Modal Title */
+.dark-neon-green-theme #model-modal-title {
+    color: var(--neon-green) !important;
+    text-shadow: 0 0 5px var(--neon-green);
+}
+
+.light-neon-green-theme #model-modal-title {
+    color: #059669 !important;
+    font-weight: 800 !important;
+}
+
+/* Hover State untuk Tombol */
+body.light-neon-green-theme #start-process-btn:hover,
+body.light-neon-green-theme #logout-btn:hover {
+    background-color: #32d911 !important;
+}
+
+/* Neon Green Labels (Overriding the standard light theme text colors) */
+/* Targets most labels in the sidebar which use text-gray-400 or font-bold */
+/* Specific overrides for Account Popup */
+body.light-neon-green-theme #account-popup,
+body.light-neon-green-theme #account-popup .bg-zinc-800,
+body.light-neon-green-theme #account-popup .bg-zinc-900 {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    border-color: #e5e7eb !important;
+}
+
+/* Fix text colors inside Account Popup */
+body.light-neon-green-theme #account-popup h3,
+body.light-neon-green-theme #account-popup p,
+body.light-neon-green-theme #account-popup .text-white,
+body.light-neon-green-theme #account-popup .text-gray-300,
+body.light-neon-green-theme #account-popup #username-display {
+    color: #111827 !important;
+}
+
+/* Fix labels inside Account Popup */
+body.light-neon-green-theme #account-popup .text-gray-400 {
+    color: #4b5563 !important;
+    /* Darker gray for labels */
+}
+
+/* Fix Select and Buttons inside Account Popup */
+body.light-neon-green-theme #account-popup select,
+body.light-neon-green-theme #account-popup button:not(#logout-btn) {
+    background-color: #f3f4f6 !important;
+    color: #1f2937 !important;
+    border-color: #d1d5db !important;
+}
+
+/* Fix Icons inside Account Popup */
+body.light-neon-green-theme #account-popup svg {
+    color: #1f2937 !important;
+}
+
+body.light-neon-green-theme #sidebar label.text-gray-400,
+body.light-neon-green-theme #sidebar label.text-gray-200,
+body.light-neon-green-theme #sidebar label.font-bold,
+body.light-neon-green-theme #sidebar label.font-medium {
+    color: #10b981 !important;
+    /* Darker Green (green-600) for readability on white bg? */
+    /* User asked for "Neon Green", but #39ff14 on white is invisible. */
+    /* Adjusting to a readable green that matches the "neon" vibe but is legible */
+    /* Actually, user said "Diff is only this is light mode". */
+    /* Safety: Use a slightly darker shade or text-shadow, OR just use the neon green if user insists. */
+    /* Decision: Use a darker "Neon Green" alternative for light mode readability: #16a34a (Tailwind green-600) is standard, but maybe #00cc00? */
+    /* Let's stick to the requested neon but maybe add a text shadow or just use it. */
+    /* WAIT. Neon Green #39ff14 on White is terrible contrast. */
+    /* I will use a darker green #00a600 for text labels in Light Mode to ensure readability while keeping the "green" theme. */
+    color: #10b981 !important;
+    /* Emerald-500 is vibrant but readable? */
+    /* Let's try #1db954 (Spotify Green) - darker than pure neon */
+}
+
+/* Re-override for specific labels to ensure they catch */
+body.light-neon-green-theme label[for="main-mode-select"] {
+    color: #059669 !important;
+    /* Emerald-600 */
+}
+
+/* Sidebar texts in Light Theme usually become dark. We want them Green. */
+/* Using #059669 (Emerald 600) for "Neon-ish" visibility on white */
+
+/* Specific fix for "Antrian Proses" */
+body.light-neon-green-theme #removebg-menu .text-gray-400,
+body.light-neon-green-theme #removebg-menu .text-gray-500 {
+    color: #059669 !important;
+}
+
+/* FIX: Override Hardcoded Backgrounds (Sidebar & Preview) */
+/* Sidebar (Assuming it uses bg-black or similar in HTML) */
+body.light-neon-green-theme #sidebar,
+body.light-neon-green-theme .bg-black,
+body.light-neon-green-theme .bg-zinc-900 {
+    background-color: #ffffff !important;
+    border-right-color: #e5e7eb !important;
+    /* Fix sidebar border */
+}
+
+/* Preview Area & Terminal (bg-black/70) */
+body.light-neon-green-theme #preview-area,
+body.light-neon-green-theme #terminal,
+body.light-neon-green-theme .bg-black\/70 {
+    background-color: #f3f4f6 !important;
+    /* Light Gray for contrast against white sidebar */
+    border-color: #e5e7eb !important;
+}
+
+/* Fix for icons in the sidebar that might be white */
+body.light-neon-green-theme #sidebar svg {
+    color: #111827 !important;
+    /* Dark icons */
+}
+
+/* Fix for logo brightness if needed */
+/* If logo is white text, it might need inverting or a drop shadow. */
+/* Assuming logo is an image, it might be fine or invisible. */
+
+/* FIX: Override Buttons & Inputs (They might inherit dark theme styles) */
+body.light-neon-green-theme .settings-button,
+body.light-neon-green-theme button.bg-zinc-800,
+body.light-neon-green-theme button.bg-zinc-700 {
+    background-color: #f3f4f6 !important;
+    color: #1f2937 !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+body.light-neon-green-theme .settings-button:hover,
+body.light-neon-green-theme button.bg-zinc-800:hover,
+body.light-neon-green-theme button.bg-zinc-700:hover {
+    background-color: #e5e7eb !important;
+}
+
+/* Fix Dropdowns/Selects background */
+body.light-neon-green-theme select,
+body.light-neon-green-theme input {
+    background-color: #ffffff !important;
+    color: #1f2937 !important;
+    border-color: #d1d5db !important;
+}
+
+/* Ensure icons inside buttons are dark */
+body.light-neon-green-theme .settings-button svg,
+body.light-neon-green-theme button svg {
+    fill: currentColor;
+    color: #1f2937 !important;
+}
+
+/* === STORYBOARD FRAME STYLES === */
+.storyboard-frame-item {
+    position: relative;
+    aspect-ratio: 9/16;
+    background: linear-gradient(135deg, rgba(30, 30, 35, 0.4) 0%, rgba(20, 20, 25, 0.6) 100%);
+    border: 2px solid rgba(113, 113, 122, 0.5);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.storyboard-frame-item:hover {
+    border-color: rgba(168, 85, 247, 0.8);
+    box-shadow: 0 8px 24px rgba(168, 85, 247, 0.2), inset 0 0 20px rgba(168, 85, 247, 0.1);
+    transform: translateY(-2px);
+}
+
+.storyboard-frame-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.storyboard-frame-item:hover .storyboard-frame-img {
+    transform: scale(1.05);
+}
+
+.storyboard-frame-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 12px;
+    z-index: 10;
+}
+
+.storyboard-frame-item:hover .storyboard-frame-overlay {
+    opacity: 1;
+}
+
+.storyboard-frame-number {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(168, 85, 247, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.storyboard-frame-label {
+    font-size: 11px;
+    color: #e4e4e7;
+    line-height: 1.3;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.storyboard-frame-actions {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 6px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 20;
+}
+
+.storyboard-frame-item:hover .storyboard-frame-actions {
+    opacity: 1;
+}
+
+.storyboard-frame-action-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.storyboard-frame-action-btn:hover {
+    background: rgba(168, 85, 247, 0.3);
+    border-color: rgba(168, 85, 247, 0.5);
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
+}
+
+.storyboard-frame-action-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2;
+}
+
+/* Loading skeleton for frames */
+.storyboard-frame-skeleton {
+    animation: pulse-skeleton 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-skeleton {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* Empty state */
+.storyboard-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    color: rgba(113, 113, 122, 0.8);
+}
+
+.storyboard-empty-state svg {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+.storyboard-empty-state p {
+    font-size: 12px;
+    margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1536px) {
+    .storyboard-frame-item {
+        aspect-ratio: 1/1.2;
+    }
+}
+
+@media (max-width: 1024px) {
+    .storyboard-frame-item {
+        aspect-ratio: 1/1;
+    }
+}
+
+/* Custom Select Arrow for Dropdowns */
+.custom-select-arrow {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%239ca3af" viewBox="0 0 16 16"><path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" /></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+}
