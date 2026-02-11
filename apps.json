@@ -1,64 +1,64 @@
 {
-  "apps": [
-    {
-      "id": "bangdull-v1",
-      "name": "BangDull App V1",
-      "description": "Aplikasi Generatif AI All-in-One (Versi Lama)",
-      "version": "2.0.2",
-      "icon": "https://via.placeholder.com/128/FF0000/FFFFFF?text=V1",
-      "downloadUrl": "https://github.com/ZeroX69/BANGDULL-Ai-Windows/releases/download/v2.0.1/BangDull-Ai-Setup-2.0.1.exe",
-      "executablePath": "BangDull App/BangDull App.exe",
-      "localPath": "BangDull App"
-    },
-    {
-      "id": "Hapus_BG",
-      "name": "Hapus_BG",
-      "description": "App Remove BG",
-      "version": "1.0.0",
-      "icon": "https://via.placeholder.com/128/00FF00/000000?text=BG",
-      "downloadUrl": "https://example.com/downloads/hapus-bg.zip",
-      "executablePath": "Hapus_BG.exe",
-      "localPath": "Hapus_BG"
-    },
-    {
-      "id": "app-metadata",
-      "name": "App Metadata",
-      "description": "Aplikasi Pengelolaan Metadata",
-      "version": "1.0.3",
-      "icon": "https://via.placeholder.com/128/0000FF/FFFFFF?text=META",
-      "downloadUrl": "https://github.com/ZeroX69/Bangdul-Metadata/releases/download/v1.0.3/BangduLL-Metadata-Setup-1.0.3.exe",
-      "executablePath": "App Metadata/Metadata.exe",
-      "localPath": "App Metadata"
-    },
-    {
-      "id": "auto-video",
-      "name": "Auto Video",
-      "description": "Generator Video Otomatis",
-      "version": "1.0.0",
-      "icon": "https://via.placeholder.com/128/FFFF00/000000?text=VIDEO",
-      "downloadUrl": "https://example.com/downloads/auto-video.zip",
-      "executablePath": "Auto Video/Auto Video.exe",
-      "localPath": "Auto Video"
-    },
-    {
-      "id": "tts-app",
-      "name": "Text to Speech (TTS)",
-      "description": "Konversi Teks ke Suara AI",
-      "version": "1.0.0",
-      "icon": "https://via.placeholder.com/128/00FFFF/000000?text=TTS",
-      "downloadUrl": "https://example.com/downloads/tts.zip",
-      "executablePath": "TTS/TTS.exe",
-      "localPath": "TTS"
-    },
-    {
-      "id": "magic-photo",
-      "name": "UGC Magic Photo",
-      "description": "Generator Foto Ajaib",
-      "version": "1.0.0",
-      "icon": "https://via.placeholder.com/128/FF00FF/FFFFFF?text=MAGIC",
-      "downloadUrl": "https://example.com/downloads/magic-photo.zip",
-      "executablePath": "Magic Photo/Magic.exe",
-      "localPath": "Magic Photo"
-    }
-  ]
+    "apps": [
+        {
+            "id": "bangdull-v1",
+            "name": "BangDull App V1",
+            "description": "Aplikasi Generatif AI All-in-One (Versi Lama)",
+            "version": "2.0.2",
+            "icon": "assets/Bangdul_V1.png",
+            "downloadUrl": "https://github.com/ZeroX69/BANGDULL-Ai-Windows/releases/download/v2.0.1/BangDull-Ai-Setup-2.0.1.exe",
+            "executablePath": "BangDull App/BangDull App.exe",
+            "localPath": "BangDull App"
+        },
+        {
+            "id": "Hapus_BG",
+            "name": "Hapus_BG",
+            "description": "App Remove BG",
+            "version": "1.0.0",
+            "icon": "assets/Remove_BG.png",
+            "downloadUrl": "https://example.com/downloads/hapus-bg.zip",
+            "executablePath": "Hapus_BG.exe",
+            "localPath": "Hapus_BG"
+        },
+        {
+            "id": "app-metadata",
+            "name": "App Metadata",
+            "description": "Aplikasi Pengelolaan Metadata",
+            "version": "1.0.3",
+            "icon": "assets/Metadata.png",
+            "downloadUrl": "https://github.com/ZeroX69/Bangdul-Metadata/releases/download/v1.0.3/BangduLL-Metadata-Setup-1.0.3.exe",
+            "executablePath": "App Metadata/Metadata.exe",
+            "localPath": "App Metadata"
+        },
+        {
+            "id": "auto-video",
+            "name": "Auto Video",
+            "description": "Generator Video Otomatis",
+            "version": "1.0.0",
+            "icon": "assets/Auto_Video.png",
+            "downloadUrl": "https://example.com/downloads/auto-video.zip",
+            "executablePath": "Auto Video/Auto Video.exe",
+            "localPath": "Auto Video"
+        },
+        {
+            "id": "tts-app",
+            "name": "Text to Speech (TTS)",
+            "description": "Konversi Teks ke Suara AI",
+            "version": "1.0.0",
+            "icon": "assets/TTS.png",
+            "downloadUrl": "https://example.com/downloads/tts.zip",
+            "executablePath": "TTS/TTS.exe",
+            "localPath": "TTS"
+        },
+        {
+            "id": "magic-photo",
+            "name": "UGC Magic Photo",
+            "description": "Generator Foto Ajaib",
+            "version": "1.0.0",
+            "icon": "assets/Magic_Photo.png",
+            "downloadUrl": "https://example.com/downloads/magic-photo.zip",
+            "executablePath": "Magic Photo/Magic.exe",
+            "localPath": "Magic Photo"
+        }
+    ]
 }
