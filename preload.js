@@ -16,14 +16,8 @@ contextBridge.exposeInMainWorld('launcherAPI', {
 
   // Listeners
   onDownloadProgress: (callback) => ipcRenderer.on('download-progress', (event, data) => callback(data)),
-  onLauncherUpdate: (callback) => ipcRenderer.on('launcher-update-available', (event, data) => callback(data)),
-
-  // Launcher Self-Update
-  downloadLauncherUpdate: (url) => ipcRenderer.invoke('launcher:download-update', url),
-  installLauncherUpdate: () => ipcRenderer.invoke('launcher:install-update'),
-  onLauncherDownloadProgress: (callback) => ipcRenderer.on('launcher-download-progress', (event, progress) => callback(progress)),
+  onLauncherUpdateStatus: (callback) => ipcRenderer.on('launcher-update-status', (event, data) => callback(data)),
 
   // Utils
   openExternal: (url) => shell.openExternal(url)
 });
-

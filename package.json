@@ -18,6 +18,7 @@
     "axios": "^1.6.0",
     "electron-log": "^5.0.0",
     "electron-store": "^8.1.0",
+    "electron-updater": "^6.7.3",
     "node-machine-id": "^1.1.12",
     "unzipper": "^0.10.0"
   },

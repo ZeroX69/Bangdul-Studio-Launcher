@@ -1,9 +1,4 @@
 {
-    "launcher": {
-        "version": "1.0.1",
-        "downloadUrl": "https://github.com/USERNAME/REPO/releases/download/v1.0.1/BangDullLauncher-Setup.exe",
-        "message": "Update keamanan dan fitur baru."
-    },
     "apps": [
         {
             "id": "bangdull-v1",

@@ -6,6 +6,7 @@ const fs = require('fs');
 const os = require('os');
 const unzipper = require('unzipper');
 const axios = require('axios');
+const { autoUpdater } = require('electron-updater');
 const { execFile } = require('child_process');
 const { machineId } = require('node-machine-id');
 const Store = require('electron-store');
@@ -55,6 +56,43 @@ function createWindow() {
 
 app.whenReady().then(() => {
   createWindow();
+
+  // --- AUTO-UPDATE LAUNCHER (sama seperti BangDull V1) ---
+  if (app.isPackaged) {
+    log.info('Checking for launcher updates...');
+    autoUpdater.autoDownload = true;
+    autoUpdater.autoInstallOnAppQuit = true;
+
+    autoUpdater.on('update-available', (info) => {
+      log.info(`Update available: v${info.version}`);
+      if (mainWindow) {
+        mainWindow.webContents.send('launcher-update-status', {
+          status: 'downloading',
+          message: `Mengunduh update v${info.version}...`
+        });
+      }
+    });
+
+    autoUpdater.on('update-not-available', () => {
+      log.info('Launcher is up to date.');
+    });
+
+    autoUpdater.on('update-downloaded', (info) => {
+      log.info(`Update downloaded: v${info.version}. Will install on quit.`);
+      if (mainWindow) {
+        mainWindow.webContents.send('launcher-update-status', {
+          status: 'ready',
+          message: `Update v${info.version} siap! Restart untuk update.`
+        });
+      }
+    });
+
+    autoUpdater.on('error', (err) => {
+      log.error('Auto-updater error:', err.message);
+    });
+
+    autoUpdater.checkForUpdates();
+  }
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
@@ -137,20 +175,7 @@ ipcMain.handle('launcher:get-apps', async () => {
 
     if (!manifest) return [];
 
-    // 2. Cek Launcher Update (Self-Update)
-    const currentLauncherVersion = app.getVersion();
-    if (manifest.launcher && manifest.launcher.version !== currentLauncherVersion) {
-      log.info(`Launcher Update Available: ${currentLauncherVersion} -> ${manifest.launcher.version}`);
-      if (mainWindow) {
-        mainWindow.webContents.send('launcher-update-available', {
-          version: manifest.launcher.version,
-          url: manifest.launcher.downloadUrl,
-          message: manifest.launcher.message || "Versi baru tersedia!"
-        });
-      }
-    }
-
-    // 3. Cek Status Aplikasi (Installed? Update Available?)
+    // 2. Cek Status Aplikasi (Installed? Update Available?)
     const appsWithStatus = manifest.apps.map(appConfig => {
       const appFolder = path.join(APPS_DIR, appConfig.id);
       const exePath = path.join(appFolder, appConfig.executablePath);
