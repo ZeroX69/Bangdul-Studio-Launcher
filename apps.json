@@ -12,7 +12,7 @@
         },
         {
             "id": "Hapus_BG",
-            "name": "Hapus_BG",
+            "name": "Hapus BG",
             "description": "App Remove BG",
             "version": "2.0.0",
             "icon": "assets/Remove_BG.png",
@@ -22,7 +22,7 @@
         },
         {
             "id": "app-metadata",
-            "name": "App Metadata",
+            "name": "Metadata",
             "description": "Aplikasi Pengelolaan Metadata",
             "version": "1.0.0",
             "icon": "assets/Metadata.png",
