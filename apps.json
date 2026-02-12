@@ -14,7 +14,7 @@
             "id": "Hapus_BG",
             "name": "Hapus_BG",
             "description": "App Remove BG",
-            "version": "2.0.0",
+            "version": "3.0.0",
             "icon": "assets/Remove_BG.png",
             "downloadUrl": "https://example.com/downloads/hapus-bg.zip",
             "executablePath": "Hapus BG/Hapus_BG.exe",
