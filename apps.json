@@ -17,7 +17,7 @@
             "version": "7.0.0",
             "icon": "assets/Remove_BG.png",
             "downloadUrl": "https://example.com/downloads/hapus-bg.zip",
-            "executablePath": "Hapus_BG.exe",
+            "executablePath": "Hapus BG/Hapus_BG.exe",
             "localPath": "Hapus_BG"
         },
         {
