@@ -4,9 +4,9 @@
             "id": "bangdull-v1",
             "name": "BangDull App V1",
             "description": "Aplikasi Generatif AI All-in-One",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "icon": "assets/Bangdul_V1.png",
-            "downloadUrl": "https://github.com/ZeroX69/BANGDULL-Ai-Windows/releases/download/v1.0.0/BangDull-Ai-1.0.0-win.zip",
+            "downloadUrl": "https://github.com/ZeroX69/BANGDULL-Ai-Windows/releases/download/v1.0.1/BangDull-Ai-1.0.1-win.zip",
             "executablePath": "BangDull Ai.exe",
             "localPath": "BangDull App"
         },
