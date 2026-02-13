@@ -36,7 +36,7 @@
             "description": "Generator Video Otomatis",
             "version": "1.0.0",
             "icon": "assets/Auto_Video.png",
-            "downloadUrl": "https://example.com/downloads/auto-video.zip",
+            "downloadUrl": "",
             "executablePath": "Auto Video/Auto Video.exe",
             "localPath": "Auto Video"
         },
@@ -46,7 +46,7 @@
             "description": "Konversi Teks ke Suara AI",
             "version": "1.0.0",
             "icon": "assets/TTS.png",
-            "downloadUrl": "https://example.com/downloads/tts.zip",
+            "downloadUrl": "",
             "executablePath": "TTS/TTS.exe",
             "localPath": "TTS"
         },
@@ -56,7 +56,7 @@
             "description": "Generator Foto Ajaib",
             "version": "1.0.0",
             "icon": "assets/Magic_Photo.png",
-            "downloadUrl": "https://example.com/downloads/magic-photo.zip",
+            "downloadUrl": "",
             "executablePath": "Magic Photo/Magic.exe",
             "localPath": "Magic Photo"
         }
