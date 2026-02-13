@@ -34,7 +34,7 @@
             "id": "auto-video",
             "name": "Auto Video",
             "description": "Generator Video Otomatis",
-            "version": "1.0.0",
+            "version": "none",
             "icon": "assets/Auto_Video.png",
             "downloadUrl": "",
             "executablePath": "Auto Video/Auto Video.exe",
