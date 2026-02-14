@@ -65,17 +65,6 @@
             "tutorialUrl": "https://youtube.com",
             "executablePath": "Magic.exe",
             "localPath": "Magic Photo"
-        },
-        {
-            "id": "magi",
-            "name": "UGC Magic Photo",
-            "description": "Generator Foto Ajaib",
-            "version": "1.0.0",
-            "icon": "assets/Magic_Photo.png",
-            "downloadUrl": "",
-            "tutorialUrl": "https://youtube.com",
-            "executablePath": "Magic.exe",
-            "localPath": "Magic Photo"
         }
     ]
 }
