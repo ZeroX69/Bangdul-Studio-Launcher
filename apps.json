@@ -18,7 +18,7 @@
             "version": "1.0.0",
             "icon": "assets/Remove_BG.png",
             "downloadUrl": "https://github.com/ZeroX69/Hapus_BG/releases/download/v1.0.0/Hapus-BG-1.0.0-win.zip",
-            "tutorialUrl": "https://youtube.com",
+            "tutorialUrl": "",
             "executablePath": "Hapus-BG.exe",
             "localPath": "Hapus_BG"
         },
@@ -29,7 +29,7 @@
             "version": "1.0.0",
             "icon": "assets/Metadata.png",
             "downloadUrl": "https://github.com/ZeroX69/Bangdul-Metadata/releases/download/v1.0.0/BangduLL-Metadata-1.0.0-win.zip",
-            "tutorialUrl": "https://youtube.com",
+            "tutorialUrl": "",
             "executablePath": "BangduLL Metadata.exe",
             "localPath": "App Metadata"
         },
@@ -37,10 +37,10 @@
             "id": "auto-video",
             "name": "Auto Video",
             "description": "Generator Video Otomatis",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "icon": "assets/Auto_Video.png",
-            "downloadUrl": "https://github.com/ZeroX69/Auto_Video/releases/download/v1.0.0/Auto-Video-1.0.0-win.zip",
-            "tutorialUrl": "https://youtube.com",
+            "downloadUrl": "https://github.com/ZeroX69/Auto_Video/releases/download/untagged-01d769d1a3efe5d5b40c/Auto-Video-1.0.1-win.zip",
+            "tutorialUrl": "",
             "executablePath": "Auto-Video.exe",
             "localPath": "Auto Video"
         },
@@ -51,7 +51,7 @@
             "version": "1.0.0",
             "icon": "assets/TTS.png",
             "downloadUrl": "",
-            "tutorialUrl": "https://youtube.com",
+            "tutorialUrl": "",
             "executablePath": "TTS.exe",
             "localPath": "TTS"
         },
@@ -62,7 +62,7 @@
             "version": "1.0.0",
             "icon": "assets/Magic_Photo.png",
             "downloadUrl": "",
-            "tutorialUrl": "https://youtube.com",
+            "tutorialUrl": "",
             "executablePath": "Magic.exe",
             "localPath": "Magic Photo"
         }
