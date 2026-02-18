@@ -15,9 +15,9 @@
             "id": "Hapus_BG",
             "name": "Hapus BG",
             "description": "App Remove BG",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "icon": "assets/Remove_BG.png",
-            "downloadUrl": "https://github.com/ZeroX69/Hapus_BG/releases/download/v1.0.0/Hapus-BG-1.0.0-win.zip",
+            "downloadUrl": "https://github.com/ZeroX69/Hapus_BG/releases/download/v1.0.1/Hapus-BG-1.0.1-win.zip",
             "tutorialUrl": "",
             "executablePath": "Hapus-BG.exe",
             "localPath": "Hapus_BG"
