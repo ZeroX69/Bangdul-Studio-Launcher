@@ -37,9 +37,9 @@
             "id": "auto-video",
             "name": "Auto Video",
             "description": "Generator Video Otomatis",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "icon": "assets/Auto_Video.png",
-            "downloadUrl": "https://github.com/ZeroX69/Auto_Video/releases/download/v1.0.1/Auto-Video-1.0.1-win.zip",
+            "downloadUrl": "https://github.com/ZeroX69/Auto_Video/releases/download/v1.0.2/Auto-Video-1.0.2-win.zip",
             "tutorialUrl": "",
             "executablePath": "Auto-Video.exe",
             "localPath": "Auto Video"
