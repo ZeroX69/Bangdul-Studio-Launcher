@@ -70,9 +70,9 @@
             "id": "Prompt-Generator",
             "name": "Prompt Generator",
             "description": "Generator Prompt Otomatis",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "icon": "assets/Prompt_Maker.png",
-            "downloadUrl": "https://github.com/ZeroX69/Prompt-Generator/releases/download/v1.0.0/Prompt-Generator-1.0.0-win.zip",
+            "downloadUrl": "https://github.com/ZeroX69/Prompt-Generator/releases/download/v1.0.1/Prompt-Generator-1.0.1-win.zip",
             "tutorialUrl": "",
             "executablePath": "Prompt Generator.exe",
             "localPath": "Prompt Generator"
