@@ -72,7 +72,7 @@
             "description": "Generator Foto Ajaib",
             "version": "1.0.0",
             "icon": "assets/Magic_Photo.png",
-            "downloadUrl": "",
+            "downloadUrl": "https://github.com/ZeroX69/Prompt-Generator/releases/download/v1.0.2/Prompt-Generator-1.0.2-win.zip",
             "tutorialUrl": "",
             "executablePath": "Magic.exe",
             "localPath": "Magic Photo"
