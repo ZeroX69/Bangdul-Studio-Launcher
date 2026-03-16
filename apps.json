@@ -26,9 +26,9 @@
             "id": "app-metadata",
             "name": "Metadata",
             "description": "Aplikasi Pengelolaan Metadata",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "icon": "assets/Metadata.png",
-            "downloadUrl": "https://github.com/ZeroX69/Bangdul-Metadata/releases/download/v1.0.2/BangduLL-Metadata-1.0.2-win.zip",
+            "downloadUrl": "https://github.com/ZeroX69/Bangdul-Metadata/releases/download/v1.0.3/BangduLL-Metadata-1.0.3-win.zip",
             "tutorialUrl": "",
             "executablePath": "BangduLL Metadata.exe",
             "localPath": "App Metadata"
