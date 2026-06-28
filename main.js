@@ -190,10 +190,10 @@ function createWindow() {
       });
     }
 
-  } else {
-    mainWindow.loadFile('activation.html');
-    mainWindow.setMenuBarVisibility(false);
-  }
+    } else {
+        mainWindow.loadFile('activation.html');
+        mainWindow.setMenuBarVisibility(false);
+    }
 }
 
 app.whenReady().then(async () => {
@@ -633,8 +633,16 @@ ipcMain.handle('launcher:get-apps', async () => {
         }
       });
 
-      // Raw GitHub langsung mengembalikan JSON (tanpa base64)
-      const remoteManifest = response.data;
+      // Pastikan response berupa objek JSON, jika string lakukan parsing
+      let remoteManifest = response.data;
+      if (typeof remoteManifest === 'string') {
+        try {
+          remoteManifest = JSON.parse(remoteManifest);
+        } catch (parseErr) {
+          log.warn('Failed to parse remote manifest string:', parseErr.message);
+          remoteManifest = null;
+        }
+      }
 
       if (remoteManifest && remoteManifest.apps && remoteManifest.apps.length > 0) {
         log.info(`[RAW] Remote Fetch Success! App[0]: ${remoteManifest.apps[0].name}`);
@@ -656,11 +664,23 @@ ipcMain.handle('launcher:get-apps', async () => {
       }
     }
 
-    // 3. Jika Cache Juga Kosong/Rusak -> Gagal Total (Karena apps.json lokal sudah dihapus)
-    if (!manifest) {
-      log.warn('No manifest found (Remote failed, Cache empty). Returning empty list.');
-      return [];
-    }
+    // 3. Jika Cache Juga Kosong/Rusak -> Coba baca apps.json bundled
+      if (!manifest) {
+        // Coba baca file apps.json yang dibundel dengan aplikasi
+        const bundledPath = path.join(__dirname, 'apps.json');
+        if (fs.existsSync(bundledPath)) {
+          try {
+            manifest = JSON.parse(fs.readFileSync(bundledPath, 'utf-8'));
+            log.info('Using bundled apps.json as fallback.');
+          } catch (e) {
+            log.error('Failed to parse bundled apps.json.', e);
+          }
+        }
+      }
+      if (!manifest) {
+        log.warn('No manifest found (Remote failed, Cache empty, no bundled apps). Returning empty list.');
+        return [];
+      }
 
     if (!manifest || !manifest.apps) return [];
 
