@@ -1,6 +1,6 @@
 {
   "name": "bangdull-studio",
-  "version": "1.0.0",
+  "version": "1.0.8",
   "description": "BANGDULL STUDIO - Creative AI Launcher",
   "main": "main.js",
   "scripts": {
@@ -11,14 +11,17 @@
   "author": "BangDull AI",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^28.0.0",
-    "electron-builder": "^24.13.3"
+    "electron": "^40.4.0",
+    "electron-builder": "^26.7.0"
   },
   "dependencies": {
+    "adm-zip": "^0.5.16",
     "axios": "^1.6.0",
     "electron-log": "^5.0.0",
     "electron-store": "^8.1.0",
     "electron-updater": "^6.7.3",
+    "extract-zip": "^2.0.1",
+    "firebase": "^12.9.0",
     "node-machine-id": "^1.1.12",
     "unzipper": "^0.10.0"
   },
@@ -33,7 +36,16 @@
       "keygen.js",
       "apps.json",
       "package.json",
+      "firebase-config.js",
+      "style.css",
+      "tailwind.js",
       "assets/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "assets",
+        "to": "assets"
+      }
     ],
     "win": {
       "target": "nsis",

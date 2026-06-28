@@ -8,9 +8,14 @@ body {
     box-sizing: border-box;
 }
 
-#main-app > aside,
+#main-app>aside,
 #main-app #center-main-panel {
     box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.3);
+}
+
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff #18181b;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -60,6 +65,7 @@ input:read-only {
 
 input[type=range] {
     -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     background: 0 0;
 }
@@ -966,376 +972,6 @@ body.dark-neon-green-theme input,
     color: #111827 !important;
 }
 
-/* Force Light Backgrounds on Main Elements */
-.light-neon-green-theme #sidebar,
-.light-neon-green-theme #preview-area,
-.light-neon-green-theme #terminal,
-.light-neon-green-theme .bg-black,
-.light-neon-green-theme .bg-black\/70,
-.light-neon-green-theme .bg-zinc-900,
-.light-neon-green-theme .bg-zinc-800 {
-    background-color: #ffffff !important;
-    color: #111827 !important;
-    border-color: #e5e7eb !important;
-    /* Gray-200 */
-}
-
-/* Fix Icons in Sidebar for Light Mode */
-.light-neon-green-theme #sidebar svg {
-    color: #111827 !important;
-}
-
-/* Fix Buttons to be Light */
-.light-neon-green-theme .settings-button,
-.light-neon-green-theme button.bg-zinc-800,
-.light-neon-green-theme button.bg-zinc-700 {
-    background-color: #f3f4f6 !important;
-    /* Gray-100 */
-    color: #1f2937 !important;
-    /* Gray-800 */
-    border: 1px solid #d1d5db !important;
-    /* Gray-300 */
-}
-
-/* Fix Icons inside Buttons to be Dark */
-.light-neon-green-theme button svg,
-.light-neon-green-theme .settings-button svg {
-    color: #1f2937 !important;
-}
-
-/* Fix Inputs and Selects */
-.light-neon-green-theme input,
-.light-neon-green-theme select,
-.light-neon-green-theme textarea {
-    background-color: #ffffff !important;
-    color: #1f2937 !important;
-    border-color: #d1d5db !important;
-}
-
-/* Neon Green Accents for Light Theme */
-.light-neon-green-theme #start-process-btn,
-.light-neon-green-theme #logout-btn {
-    background-color: #ffffff !important;
-    color: #111827 !important;
-    border: 1px solid #059669 !important;
-    /* Emerald-600 for visibility */
-    box-shadow: 0 0 5px #059669 !important;
-}
-
-.light-neon-green-theme #start-process-btn:hover,
-.light-neon-green-theme #logout-btn:hover {
-    background-color: #ecfdf5 !important;
-    /* Emerald-50 */
-    box-shadow: 0 0 10px #059669 !important;
-}
-
-/* Text Highlights - Darker Green for Readability on White */
-.light-neon-green-theme label,
-.light-neon-green-theme .text-gray-400,
-.light-neon-green-theme .text-gray-500,
-.light-neon-green-theme label[for="main-mode-select"],
-.light-neon-green-theme #removebg-menu label,
-.light-neon-green-theme #remove-bg-queue-panel h3 {
-    color: #059669 !important;
-    /* Emerald-600 */
-    font-weight: 600 !important;
-}
-
-/* Specific overrides for Model Selection Modal Title */
-.dark-neon-green-theme #model-modal-title {
-    color: var(--neon-green) !important;
-    text-shadow: 0 0 5px var(--neon-green);
-}
-
-.light-neon-green-theme #model-modal-title {
-    color: #059669 !important;
-    font-weight: 800 !important;
-}
-
-/* Hover State untuk Tombol */
-body.light-neon-green-theme #start-process-btn:hover,
-body.light-neon-green-theme #logout-btn:hover {
-    background-color: #32d911 !important;
-}
-
-/* Neon Green Labels (Overriding the standard light theme text colors) */
-/* Targets most labels in the sidebar which use text-gray-400 or font-bold */
-/* Specific overrides for Account Popup */
-body.light-neon-green-theme #account-popup,
-body.light-neon-green-theme #account-popup .bg-zinc-800,
-body.light-neon-green-theme #account-popup .bg-zinc-900 {
-    background-color: #ffffff !important;
-    color: #111827 !important;
-    border-color: #e5e7eb !important;
-}
-
-/* Fix text colors inside Account Popup */
-body.light-neon-green-theme #account-popup h3,
-body.light-neon-green-theme #account-popup p,
-body.light-neon-green-theme #account-popup .text-white,
-body.light-neon-green-theme #account-popup .text-gray-300,
-body.light-neon-green-theme #account-popup #username-display {
-    color: #111827 !important;
-}
-
-/* Fix labels inside Account Popup */
-body.light-neon-green-theme #account-popup .text-gray-400 {
-    color: #4b5563 !important;
-    /* Darker gray for labels */
-}
-
-/* Fix Select and Buttons inside Account Popup */
-body.light-neon-green-theme #account-popup select,
-body.light-neon-green-theme #account-popup button:not(#logout-btn) {
-    background-color: #f3f4f6 !important;
-    color: #1f2937 !important;
-    border-color: #d1d5db !important;
-}
-
-/* Fix Icons inside Account Popup */
-body.light-neon-green-theme #account-popup svg {
-    color: #1f2937 !important;
-}
-
-body.light-neon-green-theme #sidebar label.text-gray-400,
-body.light-neon-green-theme #sidebar label.text-gray-200,
-body.light-neon-green-theme #sidebar label.font-bold,
-body.light-neon-green-theme #sidebar label.font-medium {
-    color: #10b981 !important;
-    /* Darker Green (green-600) for readability on white bg? */
-    /* User asked for "Neon Green", but #39ff14 on white is invisible. */
-    /* Adjusting to a readable green that matches the "neon" vibe but is legible */
-    /* Actually, user said "Diff is only this is light mode". */
-    /* Safety: Use a slightly darker shade or text-shadow, OR just use the neon green if user insists. */
-    /* Decision: Use a darker "Neon Green" alternative for light mode readability: #16a34a (Tailwind green-600) is standard, but maybe #00cc00? */
-    /* Let's stick to the requested neon but maybe add a text shadow or just use it. */
-    /* WAIT. Neon Green #39ff14 on White is terrible contrast. */
-    /* I will use a darker green #00a600 for text labels in Light Mode to ensure readability while keeping the "green" theme. */
-    color: #10b981 !important;
-    /* Emerald-500 is vibrant but readable? */
-    /* Let's try #1db954 (Spotify Green) - darker than pure neon */
-}
-
-/* Re-override for specific labels to ensure they catch */
-body.light-neon-green-theme label[for="main-mode-select"] {
-    color: #059669 !important;
-    /* Emerald-600 */
-}
-
-/* Sidebar texts in Light Theme usually become dark. We want them Green. */
-/* Using #059669 (Emerald 600) for "Neon-ish" visibility on white */
-
-/* Specific fix for "Antrian Proses" */
-body.light-neon-green-theme #removebg-menu .text-gray-400,
-body.light-neon-green-theme #removebg-menu .text-gray-500 {
-    color: #059669 !important;
-}
-
-/* FIX: Override Hardcoded Backgrounds (Sidebar & Preview) */
-/* Sidebar (Assuming it uses bg-black or similar in HTML) */
-body.light-neon-green-theme #sidebar,
-body.light-neon-green-theme .bg-black,
-body.light-neon-green-theme .bg-zinc-900 {
-    background-color: #ffffff !important;
-    border-right-color: #e5e7eb !important;
-    /* Fix sidebar border */
-}
-
-/* Preview Area & Terminal (bg-black/70) */
-body.light-neon-green-theme #preview-area,
-body.light-neon-green-theme #terminal,
-body.light-neon-green-theme .bg-black\/70 {
-    background-color: #f3f4f6 !important;
-    /* Light Gray for contrast against white sidebar */
-    border-color: #e5e7eb !important;
-}
-
-/* Fix for icons in the sidebar that might be white */
-body.light-neon-green-theme #sidebar svg {
-    color: #111827 !important;
-    /* Dark icons */
-}
-
-/* Fix for logo brightness if needed */
-/* If logo is white text, it might need inverting or a drop shadow. */
-/* Assuming logo is an image, it might be fine or invisible. */
-
-/* FIX: Override Buttons & Inputs (They might inherit dark theme styles) */
-body.light-neon-green-theme .settings-button,
-body.light-neon-green-theme button.bg-zinc-800,
-body.light-neon-green-theme button.bg-zinc-700 {
-    background-color: #f3f4f6 !important;
-    color: #1f2937 !important;
-    border: 1px solid #e5e7eb !important;
-}
-
-body.light-neon-green-theme .settings-button:hover,
-body.light-neon-green-theme button.bg-zinc-800:hover,
-body.light-neon-green-theme button.bg-zinc-700:hover {
-    background-color: #e5e7eb !important;
-}
-
-/* Fix Dropdowns/Selects background */
-body.light-neon-green-theme select,
-body.light-neon-green-theme input {
-    background-color: #ffffff !important;
-    color: #1f2937 !important;
-    border-color: #d1d5db !important;
-}
-
-/* Ensure icons inside buttons are dark */
-body.light-neon-green-theme .settings-button svg,
-body.light-neon-green-theme button svg {
-    fill: currentColor;
-    color: #1f2937 !important;
-}
-
-/* === STORYBOARD FRAME STYLES === */
-.storyboard-frame-item {
-    position: relative;
-    aspect-ratio: 9/16;
-    background: linear-gradient(135deg, rgba(30, 30, 35, 0.4) 0%, rgba(20, 20, 25, 0.6) 100%);
-    border: 2px solid rgba(113, 113, 122, 0.5);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.storyboard-frame-item:hover {
-    border-color: rgba(168, 85, 247, 0.8);
-    box-shadow: 0 8px 24px rgba(168, 85, 247, 0.2), inset 0 0 20px rgba(168, 85, 247, 0.1);
-    transform: translateY(-2px);
-}
-
-.storyboard-frame-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.storyboard-frame-item:hover .storyboard-frame-img {
-    transform: scale(1.05);
-}
-
-.storyboard-frame-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 12px;
-    z-index: 10;
-}
-
-.storyboard-frame-item:hover .storyboard-frame-overlay {
-    opacity: 1;
-}
-
-.storyboard-frame-number {
-    font-size: 10px;
-    font-weight: 600;
-    color: rgba(168, 85, 247, 0.9);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 6px;
-}
-
-.storyboard-frame-label {
-    font-size: 11px;
-    color: #e4e4e7;
-    line-height: 1.3;
-    font-weight: 500;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-.storyboard-frame-actions {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    display: flex;
-    gap: 6px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 20;
-}
-
-.storyboard-frame-item:hover .storyboard-frame-actions {
-    opacity: 1;
-}
-
-.storyboard-frame-action-btn {
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-}
-
-.storyboard-frame-action-btn:hover {
-    background: rgba(168, 85, 247, 0.3);
-    border-color: rgba(168, 85, 247, 0.5);
-    box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
-}
-
-.storyboard-frame-action-btn svg {
-    width: 14px;
-    height: 14px;
-    stroke-width: 2;
-}
-
-/* Loading skeleton for frames */
-.storyboard-frame-skeleton {
-    animation: pulse-skeleton 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes pulse-skeleton {
-
-    0%,
-    100% {
-        opacity: 0.3;
-    }
-
-    50% {
-        opacity: 0.6;
-    }
-}
-
-/* Empty state */
-.storyboard-empty-state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
-    text-align: center;
-    color: rgba(113, 113, 122, 0.8);
-}
-
-.storyboard-empty-state svg {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 12px;
-    opacity: 0.5;
-}
-
-.storyboard-empty-state p {
-    font-size: 12px;
-    margin: 0;
-}
-
 /* Responsive adjustments */
 @media (max-width: 1536px) {
     .storyboard-frame-item {
@@ -1354,4 +990,304 @@ body.light-neon-green-theme button svg {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%239ca3af" viewBox="0 0 16 16"><path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" /></svg>');
     background-repeat: no-repeat;
     background-position: right 8px center;
+}
+
+/* --- STYLES MIGRATED FROM MAIN.HTML --- */
+
+.font-studio {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.app-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Running Text / Marquee */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+    border-bottom: 1px solid #3f3f46;
+    /* zinc-700 */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    /* Above header */
+    height: 28px;
+    display: flex;
+    align-items: center;
+}
+
+.marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 30s linear infinite;
+}
+
+.marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-right: 50vw;
+    /* Jarak/Jeda antar loop */
+    font-family: 'Orbitron', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: #a1a1aa;
+    /* zinc-400 */
+}
+
+.marquee-highlight {
+    color: #818cf8;
+    /* indigo-400 */
+    font-weight: bold;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Glitch Effect - Logo */
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    /* Match background to hide original */
+    clip: rect(0, 0, 0, 0);
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #00fff9;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(15px, 9999px, 86px, 0);
+    }
+
+    5% {
+        clip: rect(75px, 9999px, 5px, 0);
+    }
+
+    10% {
+        clip: rect(21px, 9999px, 14px, 0);
+    }
+
+    15% {
+        clip: rect(98px, 9999px, 73px, 0);
+    }
+
+    20% {
+        clip: rect(3px, 9999px, 86px, 0);
+    }
+
+    25% {
+        clip: rect(34px, 9999px, 13px, 0);
+    }
+
+    30% {
+        clip: rect(89px, 9999px, 55px, 0);
+    }
+
+    35% {
+        clip: rect(29px, 9999px, 2px, 0);
+    }
+
+    40% {
+        clip: rect(56px, 9999px, 76px, 0);
+    }
+
+    45% {
+        clip: rect(1px, 9999px, 32px, 0);
+    }
+
+    50% {
+        clip: rect(84px, 9999px, 98px, 0);
+    }
+
+    55% {
+        clip: rect(65px, 9999px, 21px, 0);
+    }
+
+    60% {
+        clip: rect(12px, 9999px, 43px, 0);
+    }
+
+    65% {
+        clip: rect(95px, 9999px, 67px, 0);
+    }
+
+    70% {
+        clip: rect(4px, 9999px, 87px, 0);
+    }
+
+    75% {
+        clip: rect(38px, 9999px, 19px, 0);
+    }
+
+    80% {
+        clip: rect(76px, 9999px, 54px, 0);
+    }
+
+    85% {
+        clip: rect(23px, 9999px, 9px, 0);
+    }
+
+    90% {
+        clip: rect(54px, 9999px, 65px, 0);
+    }
+
+    95% {
+        clip: rect(87px, 9999px, 32px, 0);
+    }
+
+    100% {
+        clip: rect(1px, 9999px, 1px, 0);
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        clip: rect(65px, 9999px, 100px, 0);
+    }
+
+    5% {
+        clip: rect(55px, 9999px, 4px, 0);
+    }
+
+    10% {
+        clip: rect(12px, 9999px, 21px, 0);
+    }
+
+    15% {
+        clip: rect(32px, 9999px, 76px, 0);
+    }
+
+    20% {
+        clip: rect(84px, 9999px, 10px, 0);
+    }
+
+    25% {
+        clip: rect(1px, 9999px, 54px, 0);
+    }
+
+    30% {
+        clip: rect(43px, 9999px, 21px, 0);
+    }
+
+    35% {
+        clip: rect(76px, 9999px, 32px, 0);
+    }
+
+    40% {
+        clip: rect(9px, 9999px, 87px, 0);
+    }
+
+    45% {
+        clip: rect(65px, 9999px, 2px, 0);
+    }
+
+    50% {
+        clip: rect(23px, 9999px, 43px, 0);
+    }
+
+    55% {
+        clip: rect(87px, 9999px, 65px, 0);
+    }
+
+    60% {
+        clip: rect(1px, 9999px, 76px, 0);
+    }
+
+    65% {
+        clip: rect(54px, 9999px, 9px, 0);
+    }
+
+    70% {
+        clip: rect(32px, 9999px, 55px, 0);
+    }
+
+    75% {
+        clip: rect(76px, 9999px, 1px, 0);
+    }
+
+    80% {
+        clip: rect(12px, 9999px, 84px, 0);
+    }
+
+    85% {
+        clip: rect(4px, 9999px, 32px, 0);
+    }
+
+    90% {
+        clip: rect(65px, 9999px, 65px, 0);
+    }
+
+    95% {
+        clip: rect(21px, 9999px, 76px, 0);
+    }
+
+    100% {
+        clip: rect(100px, 9999px, 100px, 0);
+    }
+}
+
+/* Glitch Hover Effect for Buttons */
+.glitch-hover {
+    position: relative;
+    overflow: hidden;
+}
+
+.glitch-hover::before,
+.glitch-hover::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    opacity: 0;
+    transition: opacity 0.1s;
+}
+
+.glitch-hover:hover::before {
+    left: 2px;
+    text-shadow: -1px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 0.3s infinite linear alternate-reverse;
+    opacity: 1;
+}
+
+.glitch-hover:hover::after {
+    left: -2px;
+    text-shadow: -1px 0 #00fff9;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-2 0.3s infinite linear alternate-reverse;
+    opacity: 1;
 }

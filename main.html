@@ -5,43 +5,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BANGDULL STUDIO</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .font-studio {
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .app-card:hover {
-            transform: translateY(-5px);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-black text-gray-200 h-screen flex flex-col overflow-hidden">
 
+    <!-- RUNNING TEXT BAR -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <!-- Duplicated content for seamless loop -->
+            <div class="marquee-item">
+                <span class="text-white">⚡ BANGDUL V1.0.0: ALL SYSTEMS OPERATIONAL</span>
+                <span><span class="marquee-highlight">🚀 NEW:</span> AI GENERATOR V1.0.2 ONLINE</span>
+                <span><span class="marquee-highlight">🚀 NEW:</span> REMOVE BG V1.0.0 ONLINE</span>
+                <span><span class="marquee-highlight">🚀 NEW:</span> METADATA GENERATOR V1.0.0 ONLINE</span>
+                <span><span class="marquee-highlight">🚀 NEW:</span> AUTO VIDEO GENERATOR V1.0.0 ONLINE</span>
+                <span><span class="marquee-highlight">🚀 NEW:</span> TTS V1.0.0 ONLINE</span>
+                <span><span class="marquee-highlight">🚀 NEW:</span> UGC MAGIC PHOTO V1.0.0 ONLINE</span>
+                <span class="text-yellow-500">💎 ENTERPRISE: ALL AKSES APP</span>
+            </div>
+            <div class="marquee-item">
+                <span class="text-white">⚡ BANGDUL V1.0.0: ALL SYSTEMS OPERATIONAL</span>
+                <span><span class="marquee-highlight">🚀 NEW:</span> AI GENERATOR V1.0.2 ONLINE</span>
+                <span><span class="marquee-highlight">🚀 NEW:</span> REMOVE BG V1.0.0 ONLINE</span>
+                <span><span class="marquee-highlight">🚀 NEW:</span> METADATA GENERATOR V1.0.0 ONLINE</span>
+                <span><span class="marquee-highlight">🚀 NEW:</span> AUTO VIDEO GENERATOR V1.0.0 ONLINE</span>
+                <span><span class="marquee-highlight">🚀 NEW:</span> TTS V1.0.0 ONLINE</span>
+                <span><span class="marquee-highlight">🚀 NEW:</span> UGC MAGIC PHOTO V1.0.0 ONLINE</span>
+                <span class="text-yellow-500">💎 ENTERPRISE: ALL AKSES APP</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header
-        class="bg-black/80 backdrop-blur-md p-4 border-b border-zinc-800 flex items-center justify-between z-10 sticky top-0">
+        class="bg-black/80 backdrop-blur-md p-4 border-b border-zinc-800 flex items-center justify-between z-10 sticky top-[28px]">
         <div class="flex items-center gap-4">
             <img src="assets/pratinjau.png" alt="Logo"
                 class="w-12 h-12 rounded-xl object-cover ring-2 ring-indigo-500/50 shadow-lg shadow-indigo-900/20">
             <div>
                 <div class="flex items-baseline gap-3">
-                    <h1
-                        class="text-2xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 font-studio drop-shadow-sm">
+                    <h1 class="glitch text-2xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 font-studio drop-shadow-sm"
+                        data-text="BANGDULL STUDIO">
                         BANGDULL STUDIO</h1>
                     <span
-                        class="text-[10px] text-zinc-500 font-mono border border-zinc-700/50 rounded px-1.5 py-0.5 bg-zinc-900/50">v1.0.0</span>
+                        class="text-xs text-white font-bold font-mono border border-white/20 rounded px-2 py-0.5 bg-white/10"
+                        id="app-version">v...</span>
                 </div>
                 <p class="text-[10px] text-zinc-500 tracking-[0.2em] uppercase font-bold pl-0.5">Creative AI Launcher
                 </p>
             </div>
         </div>
+
+        <!-- WhatsApp Support (CENTER) -->
+        <a href="#" onclick="window.launcherAPI.openExternal('http://wa.me/6285397403850')" 
+           class="flex items-center gap-2 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/30 px-4 py-2 rounded-full transition-all group scale-90 sm:scale-100 hover:shadow-lg hover:shadow-[#25D366]/10">
+            <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+            </svg>
+            <span class="font-bold tracking-wider hidden lg:inline text-xs">HUBUNGI ADMIN</span>
+        </a>
 
         <!-- Account Button -->
         <button onclick="toggleAccountModal()"
@@ -49,7 +74,7 @@
             <div class="text-right hidden sm:block">
                 <p id="header-username"
                     class="text-xs font-bold text-white group-hover:text-indigo-400 transition-colors">User</p>
-                <p class="text-[10px] text-zinc-500 uppercase tracking-wider">Online</p>
+                <p id="online-status" class="text-[10px] text-zinc-500 uppercase tracking-wider">Offline</p>
             </div>
             <div
                 class="w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-900/20">
@@ -60,7 +85,7 @@
 
     <!-- Update Notification Bar -->
     <div id="update-bar"
-        class="hidden bg-indigo-600 text-white px-4 py-2 flex items-center justify-between shadow-lg z-20 sticky top-[73px] animate-slide-down">
+        class="hidden bg-indigo-600 text-white px-4 py-2 flex items-center justify-between shadow-lg z-20 sticky top-[101px] animate-slide-down">
         <div class="flex items-center gap-3">
             <span class="text-xl">🚀</span>
             <div>
@@ -69,9 +94,9 @@
             </div>
         </div>
         <div class="flex items-center gap-3">
-            <button onclick="openLauncherDownload()"
+            <button id="update-btn" onclick="openLauncherDownload()"
                 class="bg-white text-indigo-600 px-3 py-1 rounded text-xs font-bold hover:bg-gray-100 transition-colors shadow-sm">
-                DOWNLOAD
+                CHECKING...
             </button>
             <button onclick="closeUpdateBar()"
                 class="p-1 hover:bg-indigo-500 rounded text-indigo-200 hover:text-white transition-colors"
@@ -83,7 +108,7 @@
 
     <!-- Main Content -->
     <main class="flex-grow p-8 overflow-y-auto">
-        <div id="apps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div id="apps-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             <!-- App Cards will be injected here -->
             <div class="text-zinc-500 col-span-full text-center py-20 animate-pulse">
                 Memuat daftar aplikasi...
@@ -179,10 +204,29 @@
         loadAccountInfo(); // Load user info on startup
 
 
+        // --- Active Downloads Tracker ---
+        const activeDownloads = new Set();
+        const pausedDownloads = new Set(); // Track paused downloads to ignore progress events
+
         // Render Apps
         async function loadApps() {
+            // HAPUS BLOCKER: Biarkan loadApps jalan kapan saja untuk refresh status
+            // if (activeDownloads.size > 0) ... (DIHAPUS)
+
             const apps = await window.launcherAPI.getApps();
-            appsGrid.innerHTML = '';
+
+            // UPDATE RUNNING TEXT (MARQUEE)
+            updateMarquee(apps);
+
+            // CEK LOADING STATE: Jika masih ada teks "Memuat...", bersihkan dulu
+            if (appsGrid.innerHTML.includes('Memuat daftar aplikasi')) {
+                appsGrid.innerHTML = '';
+            }
+
+            // Jika grid kosong, clear dulu (initial load bersih)
+            if (appsGrid.children.length === 0 && apps.length > 0) {
+                appsGrid.innerHTML = '';
+            }
 
             if (apps.length === 0) {
                 appsGrid.innerHTML = '<div class="text-zinc-500 col-span-full text-center py-20">Tidak ada aplikasi ditemukan dalam manifest.</div>';
@@ -190,11 +234,17 @@
             }
 
             apps.forEach(app => {
-                const card = document.createElement('div');
-                card.className = 'app-card bg-zinc-900 rounded-xl overflow-hidden shadow-lg hover:shadow-indigo-500/20 transition-all duration-300 border border-zinc-800 hover:border-indigo-500/50 relative group';
+                // SMART UPDATE: Cek apakah card sudah ada?
+                const existingCard = document.querySelector(`.app-card[data-app-id="${app.id}"]`);
 
-                // Status Logic
-                let actionBtnText = 'DOWNLOAD';
+                // Jika sedang download/pause, JANGAN refresh card agar progress bar tidak reset/hilang
+                if (activeDownloads.has(app.id) || pausedDownloads.has(app.id)) {
+                    // Skip rendering ulang untuk app ini
+                    return;
+                }
+
+                // Siapkan HTML content
+                let actionBtnText = 'INSTALL';
                 let actionBtnClass = 'bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white shadow-lg shadow-indigo-900/50';
                 let actionFunc = `downloadApp('${app.id}')`;
 
@@ -202,26 +252,38 @@
                     if (app.updateAvailable) {
                         actionBtnText = 'UPDATE';
                         actionBtnClass = 'bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white shadow-lg shadow-orange-900/50 animate-pulse';
-                        actionFunc = `downloadApp('${app.id}')`; // Update uses same download logic
+                        actionFunc = `downloadApp('${app.id}')`;
                     } else {
                         actionBtnText = 'MAINKAN';
                         actionBtnClass = 'bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white shadow-lg shadow-emerald-900/50';
                         actionFunc = `launchApp('${app.id}')`;
                     }
+                } else {
+                    // --- COMING SOON LOGIC ---
+                    if (!app.downloadUrl || app.downloadUrl === "" || app.downloadUrl === "COMING_SOON") {
+                        actionBtnText = "SEGERA HADIR";
+                        actionBtnClass = "bg-zinc-800 text-zinc-500 border border-zinc-700 cursor-not-allowed";
+                        actionFunc = "";
+                    }
                 }
 
-                card.innerHTML = `
-                    <div class="h-44 bg-zinc-950 relative overflow-hidden group">
+                let versionDisplay = app.version;
+                if (app.isInstalled && app.updateAvailable) {
+                    versionDisplay = `${app.version} &#10141; ${app.latestVersion}`;
+                }
+
+                const cardHTML = `
+                    <div class="h-36 bg-zinc-950 relative overflow-hidden group">
                         <img src="${app.icon}" alt="${app.name}" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-500 scale-100 group-hover:scale-110">
                         <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-zinc-900 to-transparent"></div>
                         <div class="absolute bottom-3 left-4 right-4 animate-slide-up">
-                            <h3 class="text-lg font-bold text-white tracking-tight drop-shadow-md truncate">${app.name}</h3>
-                            <p class="text-xs text-zinc-400 font-mono bg-black/30 w-fit px-2 py-0.5 rounded backdrop-blur-sm border border-white/5">${app.version}</p>
+                            <h3 class="text-base font-bold text-white tracking-tight drop-shadow-md truncate">${app.name}</h3>
+                            <p class="text-[10px] text-zinc-400 font-mono bg-black/30 w-fit px-2 py-0.5 rounded backdrop-blur-sm border border-white/5">${versionDisplay}</p>
                         </div>
                     </div>
                 
-                    <div class="p-5">
-                        <p class="text-zinc-400 text-sm mb-5 h-10 leading-relaxed overflow-hidden text-ellipsis line-clamp-2">${app.description}</p>
+                    <div class="p-3">
+                        <p class="text-zinc-400 text-xs mb-4 h-8 leading-relaxed overflow-hidden text-ellipsis line-clamp-2">${app.description}</p>
                         
                         <!-- Progress Bar (Hidden by default) -->
                         <div id="progress-container-${app.id}" class="hidden mb-4 bg-zinc-950 rounded-lg p-3 border border-zinc-800">
@@ -230,28 +292,65 @@
                                 <span id="status-text-${app.id}">Downloading...</span>
                                 <span id="progress-text-${app.id}">0%</span>
                             </div>
-                            <div class="w-full bg-gray-700 rounded-full h-1.5">
-                                <div id="progress-bar-${app.id}" class="bg-indigo-500 h-1.5 rounded-full" style="width: 0%"></div>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5 mb-2">
+                                <div id="progress-bar-${app.id}" class="bg-indigo-500 h-1.5 rounded-full transition-all" style="width: 0%"></div>
+                            </div>
+                            <div class="flex gap-2">
+                                <button id="pause-btn-${app.id}" onclick="pauseDownload('${app.id}')" class="flex-1 py-1 text-xs bg-yellow-600/80 hover:bg-yellow-500 rounded text-white font-bold transition-colors">⏸ PAUSE</button>
                             </div>
                         </div>
 
                         <div class="flex gap-2">
-                            <button id="btn-${app.id}" onclick="${actionFunc}" 
-                                class="flex-grow py-2 rounded-lg font-bold text-sm tracking-wide transition-colors ${actionBtnClass}">
+                            <button id="btn-${app.id}" onclick="${actionFunc}" ${actionFunc === "" ? "disabled" : ""}
+                                class="glitch-hover flex-grow py-2 rounded-lg font-bold text-sm tracking-wide transition-colors ${actionBtnClass}"
+                                data-text="${actionBtnText}">
                                 ${actionBtnText}
                             </button>
+                            
+                            <!-- Tutorial Button -->
+                            ${app.tutorialUrl ? `
+                            <button onclick="openTutorial('${app.tutorialUrl}')" 
+                                class="glitch-hover px-3 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-lg text-indigo-400 hover:text-white transition-colors border border-zinc-700" 
+                                title="Tonton Tutorial"
+                                data-text="📺">
+                                📺
+                            </button>` : ''}
+
                             ${app.isInstalled ? `
-                            <button onclick="openFolder('${app.id}')" class="px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg text-gray-300" title="Buka Folder">
-                                📂
+
+                            <button onclick="uninstallApp('${app.id}', '${app.name}')" 
+                                class="glitch-hover px-3 py-2 bg-red-900/50 hover:bg-red-700 rounded-lg text-red-400 hover:text-white transition-colors" 
+                                title="Hapus Aplikasi"
+                                data-text="🗑️">
+                                🗑️
                             </button>` : ''}
                         </div>
                     </div>
                 `;
-                appsGrid.appendChild(card);
 
-                // Simpan text object app di element untuk referensi nanti jika perlu
-                card.dataset.appConfig = JSON.stringify(app);
+                if (existingCard) {
+                    // Update content jika card sudah ada (dan tidak sedang download)
+                    existingCard.innerHTML = cardHTML;
+                    // Update dataset config
+                    existingCard.dataset.appConfig = JSON.stringify(app);
+                } else {
+                    // Create new card
+                    const card = document.createElement('div');
+                    card.className = 'app-card bg-zinc-900 rounded-md overflow-hidden shadow-md hover:shadow-indigo-500/20 transition-all duration-300 hover:ring-1 hover:ring-indigo-500/50 relative group border-0';
+                    card.dataset.appId = app.id; // Mark ID
+                    card.dataset.appConfig = JSON.stringify(app);
+                    card.innerHTML = cardHTML;
+                    appsGrid.appendChild(card);
+                }
             });
+        }
+
+        // Helper to update button text AND glitch attribute
+        function setBtnText(btn, text) {
+            if (btn) {
+                btn.innerText = text;
+                btn.setAttribute('data-text', text);
+            }
         }
 
         // Actions
@@ -262,39 +361,86 @@
             // Konfirmasi (opsional, untuk UX lebih baik)
             if (!confirm("Download aplikasi ini?")) return;
 
-            // UI State: Downloading
-            btn.disabled = true;
-            btn.classList.add('opacity-50', 'cursor-not-allowed');
-            btn.innerText = 'MEMPROSES...';
-            progressContainer.classList.remove('hidden');
+            // REGISTER download aktif
+            activeDownloads.add(appId);
 
-            // Ambil config dari dataset (cara cepat, di real app lebih baik lookup array)
+            // UI State: Downloading
+            if (btn) {
+                btn.disabled = true;
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
+                setBtnText(btn, 'MEMUAT...');
+            }
+            if (progressContainer) progressContainer.classList.remove('hidden');
+
             const apps = await window.launcherAPI.getApps();
             const appConfig = apps.find(a => a.id === appId);
 
             window.launcherAPI.downloadApp(appConfig).then(result => {
-                if (result.success) {
-                    if (result.type === 'installer') {
-                        // Installer .exe telah dijalankan
-                        alert(`Installer ${appConfig.name} sudah dibuka! Silakan ikuti proses instalasinya.`);
-                        // Reset UI (karena installer terpisah)
+                // UNREGISTER download selesai
+                activeDownloads.delete(appId);
+
+                if (result.paused) {
+                    // Download di-pause, tampilkan tombol RESUME
+                    pausedDownloads.add(appId); // Mark as paused
+                    if (btn) {
                         btn.disabled = false;
                         btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                        btn.innerText = 'DOWNLOAD';
-                        progressContainer.classList.add('hidden');
+                        setBtnText(btn, '▶ RESUME');
+                        btn.onclick = () => resumeDownload(appId);
+                    }
+                    const pauseBtn = document.getElementById(`pause-btn-${appId}`);
+                    if (pauseBtn) pauseBtn.classList.add('hidden');
+                    const statusText = document.getElementById(`status-text-${appId}`);
+                    if (statusText) statusText.innerText = 'Paused';
+                    return;
+                }
+
+                if (result.success) {
+                    console.log(`[UI] Download & Install Success for ${appConfig.name}`);
+
+                    // DOM UPDATE MANUAL (Agar tidak perlu reloadApps full)
+                    if (progressContainer) progressContainer.classList.add('hidden');
+                    pausedDownloads.delete(appId);
+
+                    // Update tombol jadi MAINKAN secara langsung
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+
+                        // Style Button MAINKAN
+                        setBtnText(btn, 'MAINKAN');
+                        btn.onclick = () => launchApp(appId);
+                        btn.className = "flex-grow py-2 rounded-lg font-bold text-sm tracking-wide transition-colors bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white shadow-lg shadow-emerald-900/50";
+                    }
+
+                    // Opsional: Reload apps pelan-pelan untuk update cache/metadata state
+                    // Tapi karena sudah update DOM manual, user tidak perlu menunggu
+                    loadApps();
+
+                    if (result.type === 'installer') {
+                        // Installer sudah dibuka, no alert
                     } else {
-                        // ZIP berhasil di-extract
-                        loadApps();
-                        alert(`Berhasil menginstal ${appConfig.name}!`);
+                        // Success, no alert
                     }
                 } else {
                     alert(`Gagal download: ${result.error}`);
-                    // Reset UI
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        setBtnText(btn, 'INSTALL');
+                    }
+                    if (progressContainer) progressContainer.classList.add('hidden');
+                }
+            }).catch(err => {
+                activeDownloads.delete(appId);
+                console.error(`[UI] Download error for ${appId}:`, err);
+                alert(`Error saat download: ${err.message || err}`);
+                if (btn) {
                     btn.disabled = false;
                     btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                    btn.innerText = 'DOWNLOAD';
-                    progressContainer.classList.add('hidden');
+                    setBtnText(btn, 'DOWNLOAD');
                 }
+                if (progressContainer) progressContainer.classList.add('hidden');
             });
         }
 
@@ -317,9 +463,167 @@
             window.launcherAPI.openFolder(appConfig);
         }
 
+        async function updateMarquee(apps) {
+            const marqueeItems = document.querySelectorAll('.marquee-item');
+            if (marqueeItems.length === 0) return;
+
+            // 1. Static Prefix with Dynamic Launcher Version
+            let launcherVersion = '1.0.0'; // Default fallback
+            try {
+                launcherVersion = await window.launcherAPI.getAppVersion();
+            } catch (e) {
+                console.error("[UI] Failed to get launcher version for marquee", e);
+            }
+
+            let htmlContent = `<span class="text-white">⚡ BANGDULL V${launcherVersion}: ALL SYSTEMS OPERATIONAL</span>`;
+
+            // 2. Dynamic Apps from JSON
+            if (apps && apps.length > 0) {
+                apps.forEach(app => {
+                    const version = app.latestVersion || app.version || '1.0.0';
+                    htmlContent += `<span><span class="marquee-highlight">🚀 NEW:</span> ${app.name.toUpperCase()} V${version} ONLINE</span>`;
+                });
+            }
+
+            // 3. Static Suffix
+            htmlContent += '<span class="text-yellow-500">💎 ENTERPRISE: ALL AKSES APP</span>';
+
+            // 4. Update DOM (Both duplicate items for infinite scroll)
+            marqueeItems.forEach(item => {
+                item.innerHTML = htmlContent;
+            });
+        }
+
+        async function uninstallApp(appId, appName) {
+            // BLOCK uninstall jika ada download aktif (Global block ini masih relevan untuk mencegah race condition uninstall)
+            if (activeDownloads.has(appId)) {
+                alert('Tunggu proses download aplikasi ini selesai dulu.');
+                return;
+            }
+            if (!confirm(`Hapus "${appName}" dari komputer ini?\nAnda bisa download ulang kapan saja.`)) return;
+
+            const result = await window.launcherAPI.uninstallApp(appId);
+            if (result.success) {
+                alert(`${appName} berhasil dihapus!`);
+                loadApps();
+            } else {
+                alert(`Gagal menghapus: ${result.error}`);
+            }
+        }
+
+        async function openTutorial(url) {
+            if (url && url !== "") {
+                try {
+                    const result = await window.launcherAPI.openExternal(url);
+                    if (!result || !result.success) {
+                        alert("Gagal membuka link: " + (result?.error || 'Unknown error'));
+                    }
+                } catch (e) {
+                    alert("Error system: " + e.message);
+                }
+            } else {
+                alert("Link tutorial belum tersedia untuk aplikasi ini.");
+            }
+        }
+
+        // === PAUSE / RESUME FUNCTIONS ===
+        async function pauseDownload(appId) {
+            const result = await window.launcherAPI.pauseDownload(appId);
+            if (result.success) {
+                pausedDownloads.add(appId); // Mark as paused immediately
+                const btn = document.getElementById(`btn-${appId}`);
+                if (btn) {
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    setBtnText(btn, '▶ RESUME');
+                    btn.onclick = () => resumeDownload(appId);
+                }
+                const pauseBtn = document.getElementById(`pause-btn-${appId}`);
+                if (pauseBtn) pauseBtn.classList.add('hidden');
+                const statusText = document.getElementById(`status-text-${appId}`);
+                if (statusText) statusText.innerText = 'Paused';
+            }
+        }
+
+        async function resumeDownload(appId) {
+            const btn = document.getElementById(`btn-${appId}`);
+            const progressContainer = document.getElementById(`progress-container-${appId}`);
+
+            // Remove from paused and REGISTER download aktif lagi
+            pausedDownloads.delete(appId);
+            activeDownloads.add(appId);
+
+            // UI: Resuming
+            if (btn) {
+                btn.disabled = true;
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
+                setBtnText(btn, 'MELANJUTKAN...');
+            }
+            if (progressContainer) progressContainer.classList.remove('hidden');
+            const pauseBtn = document.getElementById(`pause-btn-${appId}`);
+            if (pauseBtn) pauseBtn.classList.remove('hidden');
+
+            window.launcherAPI.resumeDownload(appId).then(result => {
+                activeDownloads.delete(appId);
+
+                if (result.paused) {
+                    // Logic pause
+                    pausedDownloads.add(appId);
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        setBtnText(btn, '▶ RESUME');
+                        btn.onclick = () => resumeDownload(appId);
+                    }
+                    if (pauseBtn) pauseBtn.classList.add('hidden');
+                    const statusText = document.getElementById(`status-text-${appId}`);
+                    if (statusText) statusText.innerText = 'Paused';
+                    return;
+                }
+
+                if (result.success) {
+                    console.log(`[UI] Resume & Install Success for ${appId}`);
+
+                    // DOM UPDATE MANUAL
+                    if (progressContainer) progressContainer.classList.add('hidden');
+                    pausedDownloads.delete(appId);
+
+                    // Update tombol jadi MAINKAN
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        setBtnText(btn, 'MAINKAN');
+                        btn.onclick = () => launchApp(appId);
+                        btn.className = "flex-grow py-2 rounded-lg font-bold text-sm tracking-wide transition-colors bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white shadow-lg shadow-emerald-900/50";
+                    }
+
+                    loadApps();
+                    // Success, no alert
+                } else {
+                    alert(`Gagal: ${result.error}`);
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        setBtnText(btn, 'INSTALL');
+                    }
+                    if (progressContainer) progressContainer.classList.add('hidden');
+                }
+            }).catch(err => {
+                activeDownloads.delete(appId);
+                console.error(`[UI] Resume error for ${appId}:`, err);
+            });
+        }
+
         // --- Listeners ---
         window.launcherAPI.onDownloadProgress((data) => {
             const { id, progress, status } = data;
+
+            // Ignore progress updates for paused downloads
+            if (pausedDownloads.has(id)) {
+                console.log(`[UI] Ignoring progress for paused download: ${id}`);
+                return;
+            }
+
             const progressBar = document.getElementById(`progress-bar-${id}`);
             const progressText = document.getElementById(`progress-text-${id}`);
             const statusText = document.getElementById(`status-text-${id}`);
@@ -334,15 +638,39 @@
             const updateBar = document.getElementById('update-bar');
             const updateMessage = document.getElementById('update-message');
 
-            if (data.status === 'downloading') {
+            if (data.status === 'available') {
                 updateMessage.innerText = data.message;
+                const btn = document.getElementById('update-btn');
+                if (btn) {
+                    btn.innerText = 'UPDATE';
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                    btn.onclick = () => {
+                        btn.innerText = 'MENGUNDUH...';
+                        btn.disabled = true;
+                        window.launcherAPI.startUpdateDownload();
+                    };
+                }
+                updateBar.classList.remove('hidden');
+            } else if (data.status === 'downloading') {
+                updateMessage.innerText = data.message;
+                const btn = document.getElementById('update-btn');
+                if (btn) {
+                    btn.innerText = 'MENGUNDUH...'; // Plus persentase jika ada di message
+                    btn.disabled = true;
+                    btn.classList.add('opacity-70', 'cursor-not-allowed');
+                }
                 updateBar.classList.remove('hidden');
             } else if (data.status === 'ready') {
                 updateMessage.innerText = data.message;
-                const btn = updateBar.querySelector('button');
+                const btn = document.getElementById('update-btn');
                 if (btn) {
-                    btn.innerText = 'RESTART';
-                    btn.onclick = () => { location.reload(); };
+                    btn.innerText = 'RESTART & INSTALL';
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                    btn.onclick = () => {
+                        window.launcherAPI.installUpdate();
+                    };
                 }
                 updateBar.classList.remove('hidden');
             }
@@ -352,8 +680,111 @@
             document.getElementById('update-bar').classList.add('hidden');
         }
 
+        function openLauncherDownload() {
+            // Fallback jika tombol diklik manual saat belum ready (tapi seharusnya disabled)
+            window.launcherAPI.openExternal('https://github.com/ZeroX69/Bangdul-Studio-Launcher/releases');
+        }
+
+
         // Init
         loadApps();
+
+        // Cek status update saat startup (antisipasi jika event sudah lewat)
+        window.launcherAPI.getUpdateStatus().then(status => {
+            if (status) {
+                const updateBar = document.getElementById('update-bar');
+                const updateMessage = document.getElementById('update-message');
+                updateMessage.innerText = status.message;
+
+                if (status.status === 'available') {
+                    const btn = document.getElementById('update-btn');
+                    if (btn) {
+                        btn.innerText = 'UPDATE';
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                        btn.onclick = () => {
+                            btn.innerText = 'MENGUNDUH...';
+                            btn.disabled = true;
+                            window.launcherAPI.startUpdateDownload();
+                        };
+                    }
+                    updateBar.classList.remove('hidden');
+                } else if (status.status === 'downloading') {
+                    const btn = document.getElementById('update-btn');
+                    if (btn) {
+                        setBtnText(btn, 'MENGUNDUH...');
+                        btn.disabled = true;
+                        btn.classList.add('opacity-70', 'cursor-not-allowed');
+                    }
+                    updateBar.classList.remove('hidden');
+                } else if (status.status === 'ready') {
+                    const btn = document.getElementById('update-btn');
+                    if (btn) {
+                        setBtnText(btn, 'RESTART & INSTALL');
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                        btn.onclick = () => {
+                            window.launcherAPI.installUpdate();
+                        };
+                    }
+                    updateBar.classList.remove('hidden');
+                }
+            }
+        });
+
+        // === CHECK PENDING DOWNLOADS (Restore setelah restart) ===
+        window.launcherAPI.getPendingDownloads().then(pending => {
+            pending.forEach(dl => {
+                console.log(`[UI] Pending download found: ${dl.id} (${dl.progress}%)`);
+                // Tampilkan progress bar dan tombol RESUME
+                setTimeout(() => {
+                    const progressContainer = document.getElementById(`progress-container-${dl.id}`);
+                    const progressBar = document.getElementById(`progress-bar-${dl.id}`);
+                    const progressText = document.getElementById(`progress-text-${dl.id}`);
+                    const statusText = document.getElementById(`status-text-${dl.id}`);
+                    const btn = document.getElementById(`btn-${dl.id}`);
+                    const pauseBtn = document.getElementById(`pause-btn-${dl.id}`);
+
+                    if (progressContainer) {
+                        progressContainer.classList.remove('hidden');
+                        if (progressBar) progressBar.style.width = `${dl.progress}%`;
+                        if (progressText) progressText.innerText = `${dl.progress}%`;
+                        if (statusText) statusText.innerText = 'Paused - Klik RESUME untuk lanjut';
+                        if (pauseBtn) pauseBtn.classList.add('hidden');
+                    }
+                    if (btn) {
+                        btn.innerText = '▶ RESUME';
+                        btn.onclick = () => resumeDownload(dl.id);
+                    }
+                }, 1000); // Tunggu loadApps selesai render DOM
+            });
+        });
+
+        // Check for persisted update status
+        window.launcherAPI.getAppVersion().then(version => {
+            const el = document.getElementById('app-version');
+            if (el) el.innerText = `v${version}`;
+        });
+
+        // --- Online User Count ---
+        function updateOnlineStatusUI(count) {
+            const statusEl = document.getElementById('online-status');
+            if (statusEl) {
+                // Gunakan 1 sebagai fallback kalau count null/0 (karena user sendiri online)
+                const realCount = count || 1;
+                // Format: ● 1 ONLINE (Warna Hijau & Kuning)
+                statusEl.innerHTML = `<span class="text-emerald-500 font-bold">●</span> <span class="text-yellow-500 font-bold">${realCount}</span> <span class="text-emerald-500 font-bold">ONLINE</span>`;
+            }
+        }
+
+        window.launcherAPI.onOnlineUserCount((count) => {
+            updateOnlineStatusUI(count);
+        });
+
+        // Paksa tarik status awal saat UI baru terbuka (antisipasi balapan data)
+        window.launcherAPI.getOnlineStatus().then(count => {
+            updateOnlineStatusUI(count);
+        });
 
     </script>
 </body>

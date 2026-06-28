@@ -1,0 +1,4 @@
+provider: github
+owner: ZeroX69
+repo: Bangdul-Studio-Launcher
+updaterCacheDirName: bangdull-studio-updater

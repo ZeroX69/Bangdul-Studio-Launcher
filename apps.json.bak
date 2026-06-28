@@ -3,31 +3,34 @@
         {
             "id": "bangdull-v1",
             "name": "BangDull App V1",
-            "description": "Aplikasi Generatif AI All-in-One (Versi Lama)",
-            "version": "2.0.2",
+            "description": "Aplikasi Generatif Image/Video",
+            "version": "1.0.2",
             "icon": "assets/Bangdul_V1.png",
-            "downloadUrl": "https://github.com/ZeroX69/BANGDULL-Ai-Windows/releases/download/v2.0.1/BangDull-Ai-Setup-2.0.1.exe",
-            "executablePath": "BangDull App/BangDull App.exe",
+            "downloadUrl": "https://github.com/ZeroX69/BANGDULL-Ai-Windows/releases/download/v1.0.2/BangDull-Ai-1.0.2-win.zip",
+            "tutorialUrl": "https://youtu.be/jTpsFBczpVc?si=nUHFWV1Tw1PRGhYF",
+            "executablePath": "BangDull Ai.exe",
             "localPath": "BangDull App"
         },
         {
             "id": "Hapus_BG",
-            "name": "Hapus_BG",
+            "name": "Hapus BG",
             "description": "App Remove BG",
             "version": "1.0.0",
             "icon": "assets/Remove_BG.png",
-            "downloadUrl": "https://example.com/downloads/hapus-bg.zip",
-            "executablePath": "Hapus_BG.exe",
+            "downloadUrl": "https://github.com/ZeroX69/Hapus_BG/releases/download/v1.0.0/Hapus-BG-1.0.0-win.zip",
+            "tutorialUrl": "https://youtube.com",
+            "executablePath": "Hapus-BG.exe",
             "localPath": "Hapus_BG"
         },
         {
             "id": "app-metadata",
-            "name": "App Metadata",
+            "name": "Metadata",
             "description": "Aplikasi Pengelolaan Metadata",
-            "version": "1.0.3",
+            "version": "1.0.0",
             "icon": "assets/Metadata.png",
-            "downloadUrl": "https://github.com/ZeroX69/Bangdul-Metadata/releases/download/v1.0.3/BangduLL-Metadata-Setup-1.0.3.exe",
-            "executablePath": "App Metadata/Metadata.exe",
+            "downloadUrl": "https://github.com/ZeroX69/Bangdul-Metadata/releases/download/v1.0.0/BangduLL-Metadata-1.0.0-win.zip",
+            "tutorialUrl": "https://youtube.com",
+            "executablePath": "BangduLL Metadata.exe",
             "localPath": "App Metadata"
         },
         {
@@ -36,8 +39,9 @@
             "description": "Generator Video Otomatis",
             "version": "1.0.0",
             "icon": "assets/Auto_Video.png",
-            "downloadUrl": "https://example.com/downloads/auto-video.zip",
-            "executablePath": "Auto Video/Auto Video.exe",
+            "downloadUrl": "https://github.com/ZeroX69/Auto_Video/releases/download/v1.0.0/Auto-Video-1.0.0-win.zip",
+            "tutorialUrl": "https://youtube.com",
+            "executablePath": "Auto-Video.exe",
             "localPath": "Auto Video"
         },
         {
@@ -46,8 +50,9 @@
             "description": "Konversi Teks ke Suara AI",
             "version": "1.0.0",
             "icon": "assets/TTS.png",
-            "downloadUrl": "https://example.com/downloads/tts.zip",
-            "executablePath": "TTS/TTS.exe",
+            "downloadUrl": "",
+            "tutorialUrl": "https://youtube.com",
+            "executablePath": "TTS.exe",
             "localPath": "TTS"
         },
         {
@@ -56,8 +61,9 @@
             "description": "Generator Foto Ajaib",
             "version": "1.0.0",
             "icon": "assets/Magic_Photo.png",
-            "downloadUrl": "https://example.com/downloads/magic-photo.zip",
-            "executablePath": "Magic Photo/Magic.exe",
+            "downloadUrl": "",
+            "tutorialUrl": "https://youtube.com",
+            "executablePath": "Magic.exe",
             "localPath": "Magic Photo"
         }
     ]
