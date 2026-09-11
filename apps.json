@@ -67,6 +67,17 @@
             "localPath": "Magic Photo"
         },
         {
+            "id": "Folder-Merge",
+            "name": "Folder Merge",
+            "description": "Aplikasi Distribusi & Pembagi File Ke Sub-Folder Berdasarkan Waktu / Nama",
+            "version": "1.0.0",
+            "icon": "assets/Folder-Merge.png",
+            "downloadUrl": "https://github.com/ZeroX69/Folder_Merge/releases/download/v1.0.0/BangDull-Time-Based-Distributor-1.0.0-win.zip",
+            "tutorialUrl": "",
+            "executablePath": "BangDull Time-Based Distributor.exe",
+            "localPath": "Folder Merge"
+        },
+        {
             "id": "Prompt-Generator",
             "name": "Prompt Generator",
             "description": "Generator Prompt Otomatis",
