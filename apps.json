@@ -81,9 +81,9 @@
             "id": "Bangdull-Motion",
             "name": "Bangdull Motion",
             "description": "Generator Video Motion Grafis",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "icon": "assets/Bangdull-Motion.png",
-            "downloadUrl": "https://github.com/ZeroX69/BANGDULL-MOTION/releases/download/v1.0.0/Bangdull-Motion-1.0.0-win.zip",
+            "downloadUrl": "https://github.com/ZeroX69/BANGDULL-MOTION/releases/download/v1.1.0/Bangdull-Motion-1.1.0-win.zip",
             "tutorialUrl": "",
             "executablePath": "Bangdull Motion.exe",
             "localPath": "Bangdull Motion"
